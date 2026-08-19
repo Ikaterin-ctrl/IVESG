@@ -2405,7 +2405,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 .footer-bottom-team { font-weight: 600; }
 
-/* ── Depoimentos ── */
+/* ── Depoimentos / Beta section ── */
 .section-depoimentos {
   background: var(--color-surface-dark);
   border-top: 2px solid rgba(255,255,255,.06);
@@ -2432,6 +2432,84 @@ input[type="range"]::-webkit-slider-thumb {
 }
 .depo-nome  { font-weight: 700; font-size: .85rem; color: var(--color-white); }
 .depo-cargo { font-size: .75rem; color: var(--color-muted); }
+
+/* ── Beta / MVP section ── */
+.beta-badge {
+  display: inline-flex; align-items: center; gap: .45rem;
+  background: rgba(170,255,0,.12);
+  color: var(--color-accent-primary);
+  border: 2px solid rgba(170,255,0,.35);
+  border-radius: var(--radius);
+  font-family: var(--font-body); font-weight: 800;
+  font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+  padding: .3rem .8rem;
+}
+.beta-intro-text {
+  font-size: .95rem; color: var(--color-muted);
+  line-height: 1.75; max-width: 580px;
+  margin: 1rem auto 0;
+}
+.beta-intro-text strong { color: var(--color-white); }
+
+.beta-explain-box {
+  display: flex; align-items: flex-start; gap: 1rem;
+  background: rgba(170,255,0,.05);
+  border: 2px solid rgba(170,255,0,.2);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 2rem;
+}
+.beta-explain-icon { flex-shrink: 0; margin-top: 2px; }
+.beta-explain-title {
+  font-family: var(--font-title); font-weight: 900;
+  font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--color-accent-primary); margin-bottom: .4rem;
+}
+.beta-explain-desc {
+  font-size: .88rem; color: var(--color-muted); line-height: 1.7;
+}
+.beta-explain-desc strong { color: var(--color-white); }
+
+/* Cards dos 3 passos */
+.beta-step-card { min-height: 220px; }
+.beta-step-num {
+  font-family: var(--font-title); font-weight: 900;
+  font-size: 3rem; line-height: 1; letter-spacing: -0.04em;
+  color: rgba(170,255,0,.25);
+}
+.beta-step-title {
+  font-family: var(--font-title); font-weight: 900;
+  font-size: .95rem; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--color-white);
+}
+.beta-step-desc { font-size: .84rem; color: var(--color-muted); line-height: 1.65; flex: 1; }
+
+/* Banner de compartilhamento */
+.beta-share-banner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.5rem; flex-wrap: wrap;
+  background: var(--color-accent-primary);
+  border: 2px solid var(--color-black);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hard-lg);
+  padding: 1.6rem 2rem;
+  margin-top: .5rem;
+}
+.beta-share-left { flex: 1; min-width: 0; }
+.beta-share-title {
+  font-family: var(--font-title); font-weight: 900;
+  font-size: 1.1rem; letter-spacing: .02em; text-transform: uppercase;
+  color: var(--color-black); margin-bottom: .4rem;
+}
+.beta-share-desc { font-size: .88rem; color: rgba(0,0,0,.7); line-height: 1.6; }
+.beta-share-right { flex-shrink: 0; }
+
+@media (max-width: 600px) {
+  .beta-share-banner { flex-direction: column; padding: 1.3rem; }
+  .beta-share-right { width: 100%; }
+  .beta-share-right .btn { width: 100%; justify-content: center; }
+  .beta-step-card { min-height: unset; }
+}
 
 /* ── Responsivo auth + novos componentes ── */
 @media (max-width: 900px) {
