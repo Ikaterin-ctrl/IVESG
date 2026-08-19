@@ -32,10 +32,20 @@ const App = (() => {
     }
 
     _showLoader();
+
+    // Página atual sai com animação; nova entra após a saída
+    const current = document.querySelector('[data-page].active');
+    if (current) {
+      current.classList.add('page-exit');
+      current.addEventListener('animationend', () => {
+        current.classList.remove('page-exit');
+      }, { once: true });
+    }
+
     setTimeout(() => {
       _showPage(pageId);
       _hideLoader();
-    }, 180);
+    }, 220); // ≥ duração do pageExit (.28s)
   }
 
   function _showPage(pageId) {
@@ -43,6 +53,9 @@ const App = (() => {
     const target = document.querySelector(`[data-page="${pageId}"]`);
     if (!target) return;
     target.classList.add('active');
+    // Aciona animação de entrada via CSS
+    target.classList.add('page-enter');
+    target.addEventListener('animationend', () => target.classList.remove('page-enter'), { once: true });
 
     try { history.pushState({ page: pageId }, '', `#${pageId}`); } catch(e) {}
     window.scrollTo(0, 0);
@@ -53,8 +66,9 @@ const App = (() => {
     if (pageId === 'dashboard')   Dashboard.render();
     if (pageId === 'diagnostico') Diagnostico.render();
     if (pageId === 'resultado')   Resultado.render();
+    if (pageId === 'feedback')    FbkForm.init();
 
-    // Animação de entrada da página
+    // Animação de entrada da página (scroll reveal, etc.)
     if (typeof Anim !== 'undefined') Anim.pageEnter();
   }
 

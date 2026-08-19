@@ -116,33 +116,82 @@
             </div>
           </div>
 
+          <!-- MOCKUP DE UI — frame de app estilizado -->
           <div class="hero-right" aria-hidden="true">
-            <div class="score-float-card">
-              <div class="score-float-label">SCORE ESG · DEMO</div>
-              <div class="score-float-number">78</div>
-              <div class="score-float-sub">DE 100 PONTOS</div>
-              <div class="score-float-bar">
-                <div class="score-float-bar-fill" style="width:78%"></div>
+            <div class="app-mockup">
+              <!-- barra de título da "janela" -->
+              <div class="app-mockup-bar">
+                <div class="app-mockup-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="app-mockup-title">IMPACTO VERDE · DASHBOARD</div>
               </div>
-              <div class="score-float-rating">
-                <svg width="12" height="12" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88H3.88Z" fill="#000"/></svg>
-                AVANÇADO
-              </div>
-            </div>
 
-            <div class="score-secondary-card">
-              <div class="score-sec-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true">
-                  <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
-                  <rect x="9" y="3" width="6" height="4" rx="1"/>
-                  <path d="M9 12h6M9 16h4"/>
-                </svg>
+              <!-- conteúdo interno do mockup -->
+              <div class="app-mockup-body">
+
+                <!-- linha superior: score grande + badge -->
+                <div class="mock-top-row">
+                  <div class="mock-score-block">
+                    <div class="mock-score-label">SCORE ESG</div>
+                    <div class="mock-score-num">78<span>/100</span></div>
+                    <div class="mock-score-badge">AVANÇADO · A+</div>
+                  </div>
+                  <div class="mock-ring" role="img" aria-label="Score 78 de 100">
+                    <svg width="80" height="80" viewBox="0 0 80 80">
+                      <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="7"/>
+                      <!-- arco preenchido: circunferência ≈ 201; 78% = 156.8 -->
+                      <circle cx="40" cy="40" r="32" fill="none" stroke="#AAFF00" stroke-width="7"
+                              stroke-linecap="round"
+                              stroke-dasharray="156.8 201"
+                              stroke-dashoffset="50"
+                              transform="rotate(-90 40 40)"/>
+                      <text x="40" y="45" text-anchor="middle" font-family="'Syne',sans-serif"
+                            font-weight="900" font-size="18" fill="#AAFF00">78</text>
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- barras dos 3 pilares -->
+                <div class="mock-pillars">
+                  <div class="mock-pillar-row">
+                    <span class="mock-pillar-label">AMBIENTAL</span>
+                    <div class="mock-pillar-track">
+                      <div class="mock-pillar-fill" style="width:82%;background:#AAFF00"></div>
+                    </div>
+                    <span class="mock-pillar-val" style="color:#AAFF00">82</span>
+                  </div>
+                  <div class="mock-pillar-row">
+                    <span class="mock-pillar-label">SOCIAL</span>
+                    <div class="mock-pillar-track">
+                      <div class="mock-pillar-fill" style="width:71%;background:#0047FF"></div>
+                    </div>
+                    <span class="mock-pillar-val" style="color:#0047FF">71</span>
+                  </div>
+                  <div class="mock-pillar-row">
+                    <span class="mock-pillar-label">GOVERNANÇA</span>
+                    <div class="mock-pillar-track">
+                      <div class="mock-pillar-fill" style="width:88%;background:#7B00FF"></div>
+                    </div>
+                    <span class="mock-pillar-val" style="color:#7B00FF">88</span>
+                  </div>
+                </div>
+
+                <!-- linha de ação recomendada -->
+                <div class="mock-action-row">
+                  <div class="mock-action-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                  </div>
+                  <div class="mock-action-text">
+                    <div class="mock-action-label">PRÓXIMA AÇÃO</div>
+                    <div class="mock-action-desc">Implementar gestão de resíduos sólidos</div>
+                  </div>
+                  <div class="mock-action-arrow">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </div>
+                </div>
+
               </div>
-              <div>
-                <div class="score-sec-title">DIAGNÓSTICO ESG</div>
-                <div class="score-sec-sub">Pré-visualização</div>
-              </div>
-              <div class="score-sec-badge">DEMO</div>
             </div>
           </div>
         </div>
@@ -152,18 +201,21 @@
       <div class="partners-strip" aria-label="Empresas parceiras">
         <div class="partners-inner">
           <span class="partners-label">PARCEIROS &amp; CLIENTES</span>
-          <div class="partners-list" role="list">
-            <span role="listitem">PHARMATECH</span>
-            <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#AAFF00"/></svg>
-            <span role="listitem">RECICLA BRASIL</span>
-            <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#AAFF00"/></svg>
-            <span role="listitem">VERDE FUTURO SA</span>
-            <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#AAFF00"/></svg>
-            <span role="listitem">ECOTECH SP</span>
-            <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#AAFF00"/></svg>
-            <span role="listitem">DEMOCORP S.A.</span>
-            <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#AAFF00"/></svg>
-            <span role="listitem">BIORECICLA SUL</span>
+          <div class="partners-track" aria-hidden="true">
+            <div class="partners-list" role="list">
+              <span role="listitem">PHARMATECH</span>
+              <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#000"/></svg>
+              <span role="listitem">RECICLA BRASIL</span>
+              <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#000"/></svg>
+              <span role="listitem">VERDE FUTURO SA</span>
+              <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#000"/></svg>
+              <span role="listitem">ECOTECH SP</span>
+              <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#000"/></svg>
+              <span role="listitem">DEMOCORP S.A.</span>
+              <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#000"/></svg>
+              <span role="listitem">BIORECICLA SUL</span>
+              <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#000"/></svg>
+            </div>
           </div>
         </div>
       </div>
@@ -332,13 +384,11 @@
                 Após explorar, nos conte o que achou: o que fez sentido, o que ficou confuso, o que
                 está faltando. Cada resposta ajuda a melhorar a plataforma para PMEs de verdade.
               </p>
-              <a class="btn btn-primary btn-sm"
-                 href="https://forms.gle/Yb5uVVtCCGXEUVEn8"
-                 target="_blank" rel="noopener noreferrer"
+              <button class="btn btn-primary btn-sm" onclick="App.goTo('feedback');return false;"
                  style="margin-top:auto">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
                 Dar feedback
-              </a>
+              </button>
             </div>
 
           </div>
@@ -767,6 +817,98 @@
       </div>
     </section>
 
+    <!-- ── PAGE: FEEDBACK ── -->
+    <section data-page="feedback" class="page" aria-label="Deixar feedback">
+      <div class="feedback-wrapper">
+
+        <!-- Lado esquerdo — contexto -->
+        <div class="feedback-left" aria-hidden="true">
+          <div class="feedback-left-inner">
+            <div class="feedback-brand">IMPACTO<span> VERDE</span></div>
+            <div class="feedback-tagline">Sua opinião constrói o produto.</div>
+
+            <div class="feedback-steps-preview">
+              <div class="fbk-step" id="fbk-step-1">
+                <div class="fbk-step-dot"></div>
+                <span>Seu perfil</span>
+              </div>
+              <div class="fbk-step" id="fbk-step-2">
+                <div class="fbk-step-dot"></div>
+                <span>Clareza &amp; propósito</span>
+              </div>
+              <div class="fbk-step" id="fbk-step-3">
+                <div class="fbk-step-dot"></div>
+                <span>Visual &amp; navegação</span>
+              </div>
+              <div class="fbk-step" id="fbk-step-4">
+                <div class="fbk-step-dot"></div>
+                <span>Usabilidade</span>
+              </div>
+              <div class="fbk-step" id="fbk-step-5">
+                <div class="fbk-step-dot"></div>
+                <span>O que falta</span>
+              </div>
+              <div class="fbk-step" id="fbk-step-6">
+                <div class="fbk-step-dot"></div>
+                <span>Feedback livre</span>
+              </div>
+            </div>
+
+            <div class="feedback-note">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Suas respostas são anônimas e vão direto para nossa planilha de validação.
+            </div>
+          </div>
+        </div>
+
+        <!-- Lado direito — formulário multi-step -->
+        <div class="feedback-right">
+          <div class="feedback-card">
+            <a href="#" class="auth-back" onclick="App.goTo('home');return false;" aria-label="Voltar">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              Voltar
+            </a>
+
+            <!-- Barra de progresso -->
+            <div class="fbk-progress-bar" aria-hidden="true">
+              <div class="fbk-progress-fill" id="fbk-progress-fill"></div>
+            </div>
+            <div class="fbk-progress-label" id="fbk-progress-label">PERGUNTA 1 DE 6</div>
+
+            <!-- Conteúdo dinâmico das perguntas -->
+            <div id="fbk-questions"></div>
+
+            <!-- Navegação -->
+            <div class="fbk-nav" id="fbk-nav">
+              <button class="btn btn-secondary-outline btn-sm" id="fbk-btn-prev" onclick="FbkForm.prev()" style="display:none">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Anterior
+              </button>
+              <button class="btn btn-primary" id="fbk-btn-next" onclick="FbkForm.next()">
+                Próxima
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+
+            <!-- Tela de sucesso (oculta) -->
+            <div class="fbk-success" id="fbk-success" style="display:none" role="status">
+              <div class="fbk-success-icon" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              </div>
+              <h2 class="fbk-success-title">OBRIGADO!</h2>
+              <p class="fbk-success-sub">Seu feedback foi enviado e vai direto para nossa equipe. Isso ajuda muito a melhorar o Impacto Verde para PMEs reais.</p>
+              <button class="btn btn-primary" onclick="App.goTo('home');return false;">
+                Voltar ao início
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
   <!-- Toast global -->
@@ -779,6 +921,7 @@
   <script src="js/dashboard.js"></script>
   <script src="js/diagnostico.js"></script>
   <script src="js/resultado.js"></script>
+  <script src="js/feedback.js"></script>
   <script src="js/animations.js"></script>
   <script>
     function betaCopyLink() {

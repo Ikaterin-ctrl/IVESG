@@ -315,36 +315,78 @@ const Anim = (() => {
   ══════════════════════════════ */
 
   /* ══════════════════════════════
-     8. MARQUEE / TICKER
+     8. TILT 3D NOS CARDS
+     Inclinação leve ao hover do mouse dentro
+     do card — perspective + rotateX/rotateY.
+     Reseta suavemente ao sair.
   ══════════════════════════════ */
-  function _initMarquee() {
-    const list = document.querySelector('.partners-list');
-    if (!list) return;
-    list.innerHTML += list.innerHTML;
-    list.style.animation  = 'ticker 22s linear infinite'; // era 18s — mais lento
-    list.style.display    = 'flex';
-    list.style.width      = 'max-content';
-    list.style.flexWrap   = 'nowrap';
-    list.style.willChange = 'transform';
+  function _initCardTilt() {
+    if (window.matchMedia('(pointer: coarse)').matches) return; // sem toque
+
+    const SELECTORS = '.step-card, .plan-card, .depo-card, .app-mockup';
+    const MAX_DEG   = 8; // graus máximos de inclinação
+
+    function _attachTilt(card) {
+      if (card.dataset.tiltBound) return;
+      card.dataset.tiltBound = '1';
+
+      // Wrapper de perspectiva
+      card.style.perspective = '600px';
+
+      card.addEventListener('mousemove', e => {
+        const r    = card.getBoundingClientRect();
+        const cx   = r.left + r.width  / 2;
+        const cy   = r.top  + r.height / 2;
+        const dx   = (e.clientX - cx) / (r.width  / 2); // -1..1
+        const dy   = (e.clientY - cy) / (r.height / 2);
+        const rotX = -dy * MAX_DEG;
+        const rotY =  dx * MAX_DEG;
+        card.style.transition = 'transform .08s linear, box-shadow .18s cubic-bezier(.16,1,.3,1)';
+        card.style.transform  = `perspective(600px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.025)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transition = 'transform .45s cubic-bezier(.16,1,.3,1), box-shadow .18s cubic-bezier(.16,1,.3,1)';
+        // Reseta, preservando scale(1.04) no .featured
+        const isFeatured = card.classList.contains('featured');
+        card.style.transform = isFeatured ? 'scale(1.04)' : '';
+      });
+    }
+
+    // Observa DOM atual e futuro (re-renders do dashboard, etc.)
+    function _scanCards() {
+      document.querySelectorAll(SELECTORS).forEach(_attachTilt);
+    }
+
+    _scanCards();
+    // Reprocessa quando novas páginas são renderizadas
+    window._tiltScan = _scanCards;
   }
 
   /* ══════════════════════════════
-     9. PAGE TRANSITION
+     9. MARQUEE / TICKER
+     A animação é 100% CSS (.partners-list).
+     O JS só duplica os itens para o loop ficar
+     seamless — clona o conjunto uma vez.
+  ══════════════════════════════ */
+  function _initMarquee() {
+    const list = document.querySelector('.partners-list');
+    if (!list || list.dataset.marqueeInit) return;
+    list.dataset.marqueeInit = '1';
+    // Clona os filhos originais e adiciona ao final para loop contínuo
+    const original = Array.from(list.children);
+    original.forEach(el => list.appendChild(el.cloneNode(true)));
+  }
+
+  /* ══════════════════════════════
+     10. PAGE ENTER HOOK
+     A animação de entrada é feita via CSS (.page-enter).
+     Aqui apenas re-scaneamos reveals e tilt para
+     elementos inseridos dinamicamente.
   ══════════════════════════════ */
   function pageEnter() {
-    const page = document.querySelector('[data-page].active');
-    if (!page) return;
-    page.style.opacity   = '0';
-    page.style.transform = 'translateY(10px)';
-    page.style.transition = 'none';
-    requestAnimationFrame(() => {
-      page.style.transition = 'opacity .3s cubic-bezier(.16,1,.3,1), transform .3s cubic-bezier(.16,1,.3,1)';
-      requestAnimationFrame(() => {
-        page.style.opacity   = '1';
-        page.style.transform = 'translateY(0)';
-      });
-    });
     setTimeout(observeNewElements, 50);
+    setTimeout(() => window._tiltScan?.(), 80);
   }
 
   /* ══════════════════════════════
@@ -359,6 +401,7 @@ const Anim = (() => {
     _initHeroText();
     // _initFloat() — removido intencionalmente
     _initMarquee();
+    _initCardTilt();
   }
 
   if (document.readyState === 'loading') {
@@ -367,5 +410,5 @@ const Anim = (() => {
     init();
   }
 
-  return { init, pageEnter, observeNewElements };
+  return { init, pageEnter, observeNewElements, scanCardTilt: () => window._tiltScan?.() };
 })();
