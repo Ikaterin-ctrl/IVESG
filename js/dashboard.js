@@ -10,10 +10,68 @@ const Dashboard = (() => {
     const root = document.getElementById('dashboard-content');
     if (!root) return;
 
-    const p  = DATA.pilares;
-    const sg = DATA.scoreGeral;
+    const p    = DATA.pilares;
+    const sg   = DATA.scoreGeral;
+    const user = Auth.getUser();
+    const nome = user ? user.nome.split(' ')[0] : 'visitante';
+    const isGuest = user?.isGuest;
 
     root.innerHTML = `
+
+      <!-- ── Banner de boas-vindas ── -->
+      <div class="welcome-banner" id="welcome-banner">
+        <div class="welcome-banner-left">
+          <div class="welcome-emoji" aria-hidden="true">👋</div>
+          <div>
+            <div class="welcome-title">Olá, ${nome}! Bem-vindo ao seu painel ESG.</div>
+            <div class="welcome-sub">
+              ${isGuest
+                ? 'Você está explorando como <strong>visitante</strong>. Os dados abaixo são uma demonstração real da plataforma.'
+                : 'Acompanhe o desempenho ESG da sua empresa em tempo real.'}
+            </div>
+          </div>
+        </div>
+        <div class="welcome-banner-right">
+          <a href="#" class="btn btn-primary btn-sm" onclick="App.goTo('diagnostico');return false;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
+            ${isGuest ? 'TESTAR O DIAGNÓSTICO' : 'NOVO DIAGNÓSTICO'}
+          </a>
+          <button class="welcome-close" onclick="document.getElementById('welcome-banner').remove()" aria-label="Fechar aviso">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ── Guia rápido para visitante ── -->
+      ${isGuest ? `
+      <div class="quickstart-strip">
+        <div class="quickstart-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          COMO USAR ESTA PLATAFORMA
+        </div>
+        <div class="quickstart-steps">
+          <div class="qs-step active-step">
+            <div class="qs-num">1</div>
+            <div class="qs-text"><strong>Explore o Dashboard</strong><br>Veja os KPIs e o score ESG demonstração</div>
+          </div>
+          <div class="qs-arrow" aria-hidden="true">→</div>
+          <div class="qs-step">
+            <div class="qs-num">2</div>
+            <div class="qs-text"><strong>Faça o Diagnóstico</strong><br>Responda 12 perguntas e gere seu score real</div>
+          </div>
+          <div class="qs-arrow" aria-hidden="true">→</div>
+          <div class="qs-step">
+            <div class="qs-num">3</div>
+            <div class="qs-text"><strong>Veja o Resultado</strong><br>Score por pilar + recomendações personalizadas</div>
+          </div>
+          <div class="qs-arrow" aria-hidden="true">→</div>
+          <div class="qs-step">
+            <div class="qs-num">4</div>
+            <div class="qs-text"><strong>Crie sua conta</strong><br>Salve o resultado e acompanhe a evolução</div>
+          </div>
+        </div>
+      </div>` : ''}
+
       <div class="dash-header">
         <div>
           <div class="dash-title">DASHBOARD ESG</div>

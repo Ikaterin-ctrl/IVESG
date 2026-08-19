@@ -54,6 +54,9 @@ const App = (() => {
     if (pageId === 'dashboard')   Dashboard.render();
     if (pageId === 'diagnostico') Diagnostico.render();
     if (pageId === 'resultado')   Resultado.render();
+
+    // Animação de entrada da página
+    if (typeof Anim !== 'undefined') Anim.pageEnter();
   }
 
   /* ── Loader de transição ── */

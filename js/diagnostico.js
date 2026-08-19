@@ -8,14 +8,86 @@ const Diagnostico = (() => {
   let _respostas = {}; // { id_pergunta: valor }
   let _rendered = false;
 
+  let _showingIntro = true; // mostra intro antes de começar
+
   function render() {
     const root = document.getElementById('diagnostico-content');
     if (!root) return;
-    _etapa    = 0;
-    _pergunta = 0;
-    _respostas = {};
-    _rendered  = true;
-    _renderPergunta(root);
+    _etapa       = 0;
+    _pergunta    = 0;
+    _respostas   = {};
+    _rendered    = true;
+    _showingIntro = true;
+    _renderIntro(root);
+  }
+
+  /* ── Tela de introdução ── */
+  function _renderIntro(root) {
+    const totalP = DATA.etapas.reduce((acc, e) => acc + e.perguntas.length, 0);
+    root.innerHTML = `
+      <div class="diag-intro">
+        <div class="diag-intro-badge">DIAGNÓSTICO ESG</div>
+        <h2 class="diag-intro-title">Vamos medir o impacto<br>da sua empresa?</h2>
+        <p class="diag-intro-desc">
+          Responda <strong>${totalP} perguntas objetivas</strong> sobre sua operação e receba um
+          <strong>Score ESG personalizado</strong> com análise por pilar e recomendações de melhoria.
+        </p>
+
+        <div class="diag-intro-cards">
+          <div class="diag-intro-card">
+            <div class="diag-intro-card-icon" style="color:#AAFF00">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div class="diag-intro-card-title">~10 minutos</div>
+            <div class="diag-intro-card-sub">Duração estimada</div>
+          </div>
+          <div class="diag-intro-card">
+            <div class="diag-intro-card-icon" style="color:#0047FF">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+            </div>
+            <div class="diag-intro-card-title">${totalP} perguntas</div>
+            <div class="diag-intro-card-sub">Em 4 categorias</div>
+          </div>
+          <div class="diag-intro-card">
+            <div class="diag-intro-card-icon" style="color:#7B00FF">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="diag-intro-card-title">Score 0-100</div>
+            <div class="diag-intro-card-sub">Por pilar A/S/G</div>
+          </div>
+        </div>
+
+        <div class="diag-intro-etapas">
+          ${DATA.etapas.map((e, i) => `
+            <div class="diag-intro-etapa">
+              <div class="diag-intro-etapa-num" style="background:${e.cor};color:${e.corTexto === 'black' ? '#000' : '#fff'}">${i + 1}</div>
+              <div>
+                <div class="diag-intro-etapa-titulo">${e.titulo}</div>
+                <div class="diag-intro-etapa-sub">${e.perguntas.length} perguntas</div>
+              </div>
+            </div>`).join('')}
+        </div>
+
+        <div class="diag-intro-tip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          <span>Responda com honestidade — o resultado será mais útil para a sua empresa.</span>
+        </div>
+
+        <div class="diag-intro-actions">
+          <button class="btn btn-primary btn-lg" onclick="Diagnostico.comecar()">
+            COMEÇAR AGORA
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <a href="#" class="btn btn-ghost" onclick="App.goTo('dashboard');return false;">Voltar ao Dashboard</a>
+        </div>
+      </div>
+    `;
+  }
+
+  function comecar() {
+    _showingIntro = false;
+    const root = document.getElementById('diagnostico-content');
+    if (root) _renderPergunta(root);
   }
 
   /* ── Renderiza a pergunta atual ── */
@@ -220,5 +292,5 @@ const Diagnostico = (() => {
 
   function getRespostas() { return { ..._respostas }; }
 
-  return { render, selectRadio, updateSlider, proximo, anterior, getRespostas };
+  return { render, comecar, selectRadio, updateSlider, proximo, anterior, getRespostas };
 })();
