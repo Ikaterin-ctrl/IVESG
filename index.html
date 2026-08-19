@@ -12,19 +12,26 @@
 <body>
 
   <!-- ═══════════════════════════════════════════
+       LOADER DE TRANSIÇÃO
+  ═══════════════════════════════════════════ -->
+  <div class="page-loader" id="page-loader" aria-hidden="true">
+    <div class="loader-bar" id="loader-bar"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
        NAVEGAÇÃO GLOBAL
   ═══════════════════════════════════════════ -->
   <nav class="nav" id="main-nav" role="navigation" aria-label="Navegação principal">
     <a class="nav-logo" href="#" onclick="App.goTo('home');return false;" aria-label="Impacto Verde ESG — Início">
-      IMPACTO VERDE
+      IMPACTO<span class="nav-logo-accent"> VERDE</span>
     </a>
-    <ul class="nav-links" role="list">
+    <ul class="nav-links" role="list" id="nav-links-list">
       <li><a href="#" class="nav-link" onclick="App.goTo('home');return false;">INÍCIO</a></li>
       <li><a href="#" class="nav-link" onclick="App.goTo('como-funciona');return false;">COMO FUNCIONA</a></li>
       <li><a href="#" class="nav-link" onclick="App.goTo('planos');return false;">PLANOS</a></li>
     </ul>
-    <div class="nav-actions">
-      <a href="#" class="btn btn-nav" onclick="App.goTo('dashboard');return false;" aria-label="Acessar a plataforma">ACESSAR PLATAFORMA</a>
+    <div class="nav-actions" id="nav-actions">
+      <!-- Preenchido por auth.js._syncUI() -->
     </div>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menu" aria-expanded="false" onclick="App.toggleMenu()">
       <span></span><span></span><span></span>
@@ -37,7 +44,7 @@
       <li><a href="#" onclick="App.goTo('home');App.toggleMenu();return false;">INÍCIO</a></li>
       <li><a href="#" onclick="App.goTo('como-funciona');App.toggleMenu();return false;">COMO FUNCIONA</a></li>
       <li><a href="#" onclick="App.goTo('planos');App.toggleMenu();return false;">PLANOS</a></li>
-      <li><a href="#" onclick="App.goTo('dashboard');App.toggleMenu();return false;">ACESSAR PLATAFORMA</a></li>
+      <li><a href="#" onclick="App.goTo('login');App.toggleMenu();return false;">ACESSAR PLATAFORMA</a></li>
     </ul>
   </div>
 
@@ -51,7 +58,6 @@
 
       <!-- HERO -->
       <div class="hero">
-        <!-- Grid de pontos decorativo -->
         <svg class="hero-dots" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
           <defs>
             <pattern id="dot-grid" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
@@ -63,7 +69,6 @@
 
         <div class="hero-inner">
           <div class="hero-left">
-            <!-- Badge decorativo -->
             <div class="hero-badge" role="note">
               <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
                 <path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88H3.88Z" fill="#000"/>
@@ -81,8 +86,8 @@
             </p>
 
             <div class="hero-cta-group">
-              <a href="#" class="btn btn-primary" onclick="App.goTo('diagnostico');return false;" aria-label="Iniciar diagnóstico ESG gratuito">
-                COMEÇAR DIAGNÓSTICO
+              <a href="#" class="btn btn-primary btn-lg" onclick="App.goTo('cadastro');return false;" aria-label="Criar conta gratuita">
+                COMEÇAR GRÁTIS
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
               <a href="#" class="btn btn-secondary-outline" onclick="App.goTo('como-funciona');return false;">
@@ -109,7 +114,6 @@
           </div>
 
           <div class="hero-right" aria-hidden="true">
-            <!-- Card flutuante de score -->
             <div class="score-float-card">
               <div class="score-float-label">SEU SCORE ESG</div>
               <div class="score-float-number" id="hero-score-counter">0</div>
@@ -118,12 +122,11 @@
                 <div class="score-float-bar-fill" id="hero-score-bar"></div>
               </div>
               <div class="score-float-rating">
-                <svg width="12" height="12" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#000"/></svg>
+                <svg width="12" height="12" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88H3.88Z" fill="#000"/></svg>
                 AVANÇADO
               </div>
             </div>
 
-            <!-- Card decorativo secundário -->
             <div class="score-secondary-card">
               <div class="score-sec-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true">
@@ -133,7 +136,7 @@
               </div>
               <div>
                 <div class="score-sec-title">RELATÓRIO GERADO</div>
-                <div class="score-sec-sub">Junho / 2025</div>
+                <div class="score-sec-sub">Julho / 2025</div>
               </div>
               <div class="score-sec-badge">NOVO</div>
             </div>
@@ -166,13 +169,12 @@
         <div class="section-inner">
           <div class="section-header-row">
             <h2 class="section-title-dark">COMO<br>FUNCIONA</h2>
-            <a href="#" class="btn btn-dark-outline" onclick="App.goTo('diagnostico');return false;">
+            <a href="#" class="btn btn-dark-outline" onclick="App.goTo('cadastro');return false;">
               INICIAR AGORA
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
           <div class="steps-row">
-            <!-- Step 01 -->
             <div class="step-card">
               <div class="step-number">01</div>
               <div class="step-body">
@@ -187,11 +189,9 @@
                 <p class="step-desc">Responda perguntas objetivas sobre sua operação nos três pilares ESG. Leva menos de 10 minutos.</p>
               </div>
             </div>
-            <!-- Connector -->
             <div class="step-connector" aria-hidden="true">
               <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/></svg>
             </div>
-            <!-- Step 02 -->
             <div class="step-card">
               <div class="step-number">02</div>
               <div class="step-body">
@@ -205,11 +205,9 @@
                 <p class="step-desc">Receba seu Score ESG de 0 a 100 com análise detalhada por pilar e benchmarking do setor.</p>
               </div>
             </div>
-            <!-- Connector -->
             <div class="step-connector" aria-hidden="true">
               <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/></svg>
             </div>
-            <!-- Step 03 -->
             <div class="step-card">
               <div class="step-number">03</div>
               <div class="step-body">
@@ -260,6 +258,66 @@
         </div>
       </div>
 
+      <!-- DEPOIMENTOS -->
+      <div class="section-depoimentos">
+        <div class="section-inner">
+          <h2 class="section-title-white" style="margin-bottom:2.5rem;text-align:center">O QUE NOSSOS<br><span class="text-accent">CLIENTES DIZEM</span></h2>
+          <div class="depoimentos-grid">
+            <div class="depo-card">
+              <div class="depo-stars">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#AAFF00" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#AAFF00" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#AAFF00" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#AAFF00" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#AAFF00" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <p class="depo-texto">"Em 10 minutos tivemos nosso primeiro diagnóstico ESG. O relatório foi direto para o banco que financiou nossa expansão."</p>
+              <div class="depo-autor">
+                <div class="depo-avatar">MF</div>
+                <div>
+                  <div class="depo-nome">Marcos Ferreira</div>
+                  <div class="depo-cargo">CEO · Pharmatech Ind.</div>
+                </div>
+              </div>
+            </div>
+            <div class="depo-card">
+              <div class="depo-stars">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#AAFF00" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#AAFF00" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#AAFF00" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#AAFF00" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#AAFF00" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <p class="depo-texto">"Conseguimos mapear 100% dos nossos resíduos de blisters farmacêuticos e zerar as pendências de MTR. Saímos do nível iniciante para avançado em 3 meses."</p>
+              <div class="depo-autor">
+                <div class="depo-avatar">AL</div>
+                <div>
+                  <div class="depo-nome">Ana Lima</div>
+                  <div class="depo-cargo">Diretora de Sustentabilidade · Verde Futuro S.A.</div>
+                </div>
+              </div>
+            </div>
+            <div class="depo-card">
+              <div class="depo-stars">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#AAFF00" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#AAFF00" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#AAFF00" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#AAFF00" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#AAFF00" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <p class="depo-texto">"O dashboard nos dá visibilidade em tempo real do nosso score. Melhor investimento que fizemos em sustentabilidade — com custo de um café por dia."</p>
+              <div class="depo-autor">
+                <div class="depo-avatar">RS</div>
+                <div>
+                  <div class="depo-nome">Rafael Souza</div>
+                  <div class="depo-cargo">Sócio-Fundador · Ecotech SP</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- CTA FINAL HOME -->
       <div class="section-cta-final">
         <div class="section-inner" style="text-align:center">
@@ -267,13 +325,205 @@
             <svg width="40" height="40" viewBox="0 0 10 10"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88H3.88Z" fill="#000"/></svg>
           </div>
           <h2 class="cta-title">PRONTO PARA MEDIR<br>SEU IMPACTO?</h2>
-          <a href="#" class="btn btn-primary btn-lg" onclick="App.goTo('diagnostico');return false;" aria-label="Fazer diagnóstico ESG gratuito">
-            FAZER DIAGNÓSTICO GRATUITO
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+            <a href="#" class="btn btn-primary btn-lg" onclick="App.goTo('cadastro');return false;" aria-label="Criar conta gratuita">
+              CRIAR CONTA GRÁTIS
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#" class="btn btn-dark-outline btn-lg" onclick="App.goTo('login');return false;">
+              JÁ TENHO CONTA
+            </a>
+          </div>
         </div>
       </div>
 
+      <!-- FOOTER -->
+      <footer class="footer">
+        <div class="section-inner">
+          <div class="footer-grid">
+            <div class="footer-brand">
+              <div class="footer-logo">IMPACTO<span> VERDE</span></div>
+              <p class="footer-desc">Plataforma SaaS de gestão ESG para PMEs brasileiras. Diagnóstico, rastreabilidade e compliance em um só lugar.</p>
+              <div class="footer-badges">
+                <span class="footer-badge">PNRS</span>
+                <span class="footer-badge">GRI CORE</span>
+                <span class="footer-badge">ISO 14001</span>
+              </div>
+            </div>
+            <div class="footer-col">
+              <div class="footer-col-title">PRODUTO</div>
+              <a href="#" class="footer-link" onclick="App.goTo('como-funciona');return false;">Como funciona</a>
+              <a href="#" class="footer-link" onclick="App.goTo('planos');return false;">Planos e preços</a>
+              <a href="#" class="footer-link" onclick="App.goTo('diagnostico');return false;">Diagnóstico ESG</a>
+              <a href="#" class="footer-link" onclick="App.goTo('dashboard');return false;">Dashboard</a>
+            </div>
+            <div class="footer-col">
+              <div class="footer-col-title">EMPRESA</div>
+              <a href="#" class="footer-link">Sobre nós</a>
+              <a href="#" class="footer-link">Blog ESG</a>
+              <a href="#" class="footer-link">Parceiros</a>
+              <a href="#" class="footer-link">Contato</a>
+            </div>
+            <div class="footer-col">
+              <div class="footer-col-title">LEGAL</div>
+              <a href="#" class="footer-link">Termos de uso</a>
+              <a href="#" class="footer-link">Privacidade (LGPD)</a>
+              <a href="#" class="footer-link">Política ESG</a>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <span>© 2025 Impacto Verde ESG · FIAP 2TDS · Startup One</span>
+            <span class="footer-bottom-team">Catarina Costa · Miguel Garcia · Enzo Martini</span>
+          </div>
+        </div>
+      </footer>
+
+    </section>
+
+    <!-- ── PAGE: LOGIN ── -->
+    <section data-page="login" class="page" aria-label="Entrar na conta">
+      <div class="auth-wrapper">
+        <div class="auth-left" aria-hidden="true">
+          <div class="auth-left-inner">
+            <div class="auth-brand">IMPACTO<span> VERDE</span></div>
+            <div class="auth-tagline">Gestão ESG que cabe na sua PME.</div>
+            <div class="auth-features">
+              <div class="auth-feature-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                Diagnóstico ESG em 10 minutos
+              </div>
+              <div class="auth-feature-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                Score por pilar Ambiental, Social e Governança
+              </div>
+              <div class="auth-feature-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                Relatório auditável para bancos e licitações
+              </div>
+              <div class="auth-feature-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                100% gratuito no plano básico
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="auth-right">
+          <div class="auth-card">
+            <a href="#" class="auth-back" onclick="App.goTo('home');return false;" aria-label="Voltar para início">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              Voltar
+            </a>
+            <div class="auth-card-title">ENTRAR</div>
+            <div class="auth-card-sub">Acesse sua conta Impacto Verde ESG</div>
+
+            <form class="auth-form" onsubmit="AuthUI.submitLogin(event)" novalidate>
+              <div class="form-group">
+                <label class="form-label" for="login-email">E-MAIL</label>
+                <input type="email" id="login-email" class="form-input" placeholder="empresa@email.com" autocomplete="email" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="login-senha">
+                  SENHA
+                  <a href="#" class="form-label-link" tabindex="-1">Esqueceu?</a>
+                </label>
+                <div class="input-password-wrap">
+                  <input type="password" id="login-senha" class="form-input" placeholder="Mínimo 6 caracteres" autocomplete="current-password" required />
+                  <button type="button" class="input-eye" onclick="AuthUI.toggleSenha('login-senha', this)" aria-label="Mostrar senha" tabindex="-1">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="form-error" id="login-error" role="alert" aria-live="assertive"></div>
+              <button type="submit" class="btn btn-primary btn-full" id="login-submit">
+                ENTRAR NA PLATAFORMA
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </form>
+
+            <div class="auth-divider"><span>OU</span></div>
+
+            <button type="button" class="btn btn-visitante btn-full" onclick="AuthUI.entrarComoVisitante()" aria-label="Explorar a plataforma como visitante">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              EXPLORAR COMO VISITANTE
+            </button>
+
+            <div class="auth-switch" style="margin-top:.8rem">
+              Ainda não tem conta?
+              <a href="#" onclick="App.goTo('cadastro');return false;" class="auth-switch-link">Cadastre-se grátis</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PAGE: CADASTRO ── -->
+    <section data-page="cadastro" class="page" aria-label="Criar conta">
+      <div class="auth-wrapper">
+        <div class="auth-left" aria-hidden="true">
+          <div class="auth-left-inner">
+            <div class="auth-brand">IMPACTO<span> VERDE</span></div>
+            <div class="auth-tagline">Comece sua jornada ESG hoje.</div>
+            <div class="auth-score-preview">
+              <div class="auth-score-num">78</div>
+              <div class="auth-score-label">SCORE ESG MÉDIO<br>DOS NOVOS USUÁRIOS<br>APÓS 90 DIAS</div>
+            </div>
+          </div>
+        </div>
+        <div class="auth-right">
+          <div class="auth-card">
+            <a href="#" class="auth-back" onclick="App.goTo('home');return false;" aria-label="Voltar para início">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              Voltar
+            </a>
+            <div class="auth-card-title">CRIAR CONTA</div>
+            <div class="auth-card-sub">Diagnóstico gratuito — sem cartão de crédito</div>
+
+            <form class="auth-form" onsubmit="AuthUI.submitCadastro(event)" novalidate>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="cad-nome">SEU NOME</label>
+                  <input type="text" id="cad-nome" class="form-input" placeholder="Nome completo" autocomplete="name" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="cad-empresa">EMPRESA</label>
+                  <input type="text" id="cad-empresa" class="form-input" placeholder="Nome da empresa" autocomplete="organization" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cad-email">E-MAIL CORPORATIVO</label>
+                <input type="email" id="cad-email" class="form-input" placeholder="empresa@email.com" autocomplete="email" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cad-senha">SENHA</label>
+                <div class="input-password-wrap">
+                  <input type="password" id="cad-senha" class="form-input" placeholder="Mínimo 6 caracteres" autocomplete="new-password" required />
+                  <button type="button" class="input-eye" onclick="AuthUI.toggleSenha('cad-senha', this)" aria-label="Mostrar senha" tabindex="-1">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="form-error" id="cad-error" role="alert" aria-live="assertive"></div>
+              <button type="submit" class="btn btn-primary btn-full" id="cad-submit">
+                CRIAR CONTA GRÁTIS
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+              <p class="auth-terms">Ao criar conta, você concorda com nossos <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade (LGPD)</a>.</p>
+            </form>
+
+            <div class="auth-divider"><span>OU</span></div>
+
+            <button type="button" class="btn btn-visitante btn-full" onclick="AuthUI.entrarComoVisitante()" aria-label="Explorar a plataforma como visitante">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              EXPLORAR COMO VISITANTE
+            </button>
+
+            <div class="auth-switch" style="margin-top:.8rem">
+              Já tem conta?
+              <a href="#" onclick="App.goTo('login');return false;" class="auth-switch-link">Entrar</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- ── PAGE: COMO FUNCIONA (dedicada) ── -->
@@ -325,7 +575,7 @@
             </div>
           </div>
           <div style="text-align:center;margin-top:3rem">
-            <a href="#" class="btn btn-primary btn-lg" onclick="App.goTo('diagnostico');return false;">
+            <a href="#" class="btn btn-primary btn-lg" onclick="App.goTo('cadastro');return false;">
               COMEÇAR AGORA
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
@@ -377,7 +627,7 @@
             <span>PLANOS</span>
           </a>
         </nav>
-        <a href="#" class="sidebar-link sidebar-exit" onclick="App.goTo('home');return false;" aria-label="Sair do dashboard">
+        <a href="#" class="sidebar-link sidebar-exit" onclick="Auth.logout();return false;" aria-label="Sair da conta">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
           <span>SAIR</span>
         </a>
@@ -405,7 +655,7 @@
             <span>RESULTADO</span>
           </a>
         </nav>
-        <a href="#" class="sidebar-link sidebar-exit" onclick="App.goTo('home');return false;">
+        <a href="#" class="sidebar-link sidebar-exit" onclick="Auth.logout();return false;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
           <span>SAIR</span>
         </a>
@@ -433,7 +683,7 @@
             <span>RESULTADO</span>
           </a>
         </nav>
-        <a href="#" class="sidebar-link sidebar-exit" onclick="App.goTo('home');return false;">
+        <a href="#" class="sidebar-link sidebar-exit" onclick="Auth.logout();return false;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
           <span>SAIR</span>
         </a>
@@ -448,11 +698,13 @@
   <!-- Toast global -->
   <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 
-  <!-- Scripts -->
+  <!-- Scripts — ordem importa: data → auth → app → módulos -->
   <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
   <script src="js/app.js"></script>
   <script src="js/dashboard.js"></script>
   <script src="js/diagnostico.js"></script>
   <script src="js/resultado.js"></script>
+
 </body>
 </html>

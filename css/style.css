@@ -1650,6 +1650,23 @@ input[type="range"]::-webkit-slider-thumb {
 .toast.show { opacity: 1; transform: translateY(0); }
 .toast.error { background: #FF4444; color: #fff; border-color: #000; }
 
+/* ── Botão Visitante ── */
+.btn-visitante {
+  background: transparent;
+  color: var(--color-muted);
+  border: 2px dashed rgba(255,255,255,.25);
+  font-size: .78rem;
+  letter-spacing: .08em;
+  gap: .5rem;
+  transition: all .15s;
+}
+.btn-visitante:hover {
+  border-color: rgba(255,255,255,.5);
+  color: var(--color-white);
+  background: rgba(255,255,255,.04);
+}
+.btn-visitante:hover svg { stroke: var(--color-accent-primary); }
+
 /* ═══════════════════════════════════════════
    RESPONSIVO
 ═══════════════════════════════════════════ */
