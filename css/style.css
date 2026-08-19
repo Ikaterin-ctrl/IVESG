@@ -568,15 +568,11 @@ body {
   width: 100%;
 }
 .partners-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
   padding: .9rem 2rem;
   display: flex;
   align-items: center;
   gap: 2rem;
-  flex-wrap: wrap;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
 }
 .partners-label {
   font-family: var(--font-body);
@@ -592,7 +588,8 @@ body {
   display: flex;
   align-items: center;
   gap: 1.2rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 .partners-list span {
   font-family: var(--font-body);

@@ -12,7 +12,6 @@ const App = (() => {
   /* ── Inicializa ── */
   function init() {
     Auth.init();        // restaura sessão e sincroniza nav
-    _animateHeroScore();
     _renderPlanos();
     _syncNavActive('home');
 
@@ -104,25 +103,6 @@ const App = (() => {
     const btn     = document.getElementById('nav-hamburger');
     overlay.classList.toggle('open', _menuOpen);
     if (btn) btn.setAttribute('aria-expanded', String(_menuOpen));
-  }
-
-  /* ── Animação do score no hero ── */
-  function _animateHeroScore() {
-    const target = 78;
-    const numEl  = document.getElementById('hero-score-counter');
-    const barEl  = document.getElementById('hero-score-bar');
-    if (!numEl) return;
-
-    let current = 0;
-    const step  = target / (1400 / 16);
-
-    const tick = () => {
-      current = Math.min(current + step, target);
-      numEl.textContent = Math.round(current);
-      if (barEl) barEl.style.width = (current) + '%';
-      if (current < target) requestAnimationFrame(tick);
-    };
-    setTimeout(() => requestAnimationFrame(tick), 400);
   }
 
   /* ── Planos ── */
