@@ -15,34 +15,31 @@ button, a { cursor: pointer; }
 
   .cursor-dot {
     position: fixed;
-    width: 8px; height: 8px;
+    width: 6px; height: 6px;
     background: var(--color-accent-primary, #AAFF00);
     border-radius: 50%;
     pointer-events: none;
     z-index: 99999;
-    mix-blend-mode: difference;
-    transition: opacity .2s;
+    /* Sem mix-blend-mode — não inverte texto nem briga com conteúdo */
+    transition: opacity .25s;
     will-change: transform;
   }
 
   .cursor-ring {
     position: fixed;
-    width: 40px; height: 40px;
-    border: 2px solid rgba(170,255,0,.6);
+    width: 32px; height: 32px;
+    border: 1.5px solid rgba(170,255,0,.45);
     border-radius: 50%;
     pointer-events: none;
     z-index: 99998;
-    transition: width .2s cubic-bezier(.16,1,.3,1),
-                height .2s cubic-bezier(.16,1,.3,1),
-                border-color .2s,
-                opacity .2s;
+    /* Só opacidade e border transitam — sem resize do anel */
+    transition: border-color .2s, opacity .25s;
     will-change: transform;
   }
 
+  /* Hover: só muda cor da borda, sem crescer */
   .cursor-ring.cursor-hover {
-    width: 56px; height: 56px;
-    border-color: rgba(170,255,0,1);
-    background: rgba(170,255,0,.06);
+    border-color: rgba(170,255,0,.9);
   }
 }
 
