@@ -15,31 +15,31 @@ button, a { cursor: pointer; }
 
   .cursor-dot {
     position: fixed;
+    top: 0; left: 0;          /* origem do translate */
     width: 6px; height: 6px;
-    background: var(--color-accent-primary, #AAFF00);
+    background: #AAFF00;
     border-radius: 50%;
     pointer-events: none;
     z-index: 99999;
-    /* Sem mix-blend-mode — não inverte texto nem briga com conteúdo */
-    transition: opacity .25s;
+    visibility: hidden;        /* JS controla — evita flash antes do 1º movimento */
     will-change: transform;
   }
 
   .cursor-ring {
     position: fixed;
+    top: 0; left: 0;          /* origem do translate */
     width: 32px; height: 32px;
-    border: 1.5px solid rgba(170,255,0,.45);
+    border: 1.5px solid rgba(170,255,0,.5);
     border-radius: 50%;
     pointer-events: none;
     z-index: 99998;
-    /* Só opacidade e border transitam — sem resize do anel */
-    transition: border-color .2s, opacity .25s;
+    visibility: hidden;
+    transition: border-color .15s;
     will-change: transform;
   }
 
-  /* Hover: só muda cor da borda, sem crescer */
   .cursor-ring.cursor-hover {
-    border-color: rgba(170,255,0,.9);
+    border-color: rgba(170,255,0,.95);
   }
 }
 

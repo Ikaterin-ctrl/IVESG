@@ -13,8 +13,13 @@ const Anim = (() => {
      Sem mix-blend-mode para não inverter texto.
   ══════════════════════════════ */
   let _cursorDot, _cursorRing;
-  let _cx = -200, _cy = -200;
-  let _rx = -200, _ry = -200;
+  // posições inicializam com null para detectar "ainda não moveu"
+  let _cx = null, _cy = null;
+  let _rx = null, _ry = null;
+
+  // tamanhos em sync com o CSS
+  const DOT_SIZE  = 6;
+  const RING_SIZE = 32;
 
   function _initCursor() {
     if (window.matchMedia('(pointer: coarse)').matches) return;
@@ -26,50 +31,59 @@ const Anim = (() => {
     document.body.appendChild(_cursorDot);
     document.body.appendChild(_cursorRing);
 
-    // Começa invisível, aparece só depois do primeiro movimento
-    _cursorDot.style.opacity  = '0';
-    _cursorRing.style.opacity = '0';
-
-    let _entered = false;
+    // Esconde até ter uma posição real (evita "voo" da borda)
+    _cursorDot.style.visibility  = 'hidden';
+    _cursorRing.style.visibility = 'hidden';
 
     document.addEventListener('mousemove', e => {
       _cx = e.clientX;
       _cy = e.clientY;
-      if (!_entered) {
-        _entered = true;
-        _cursorDot.style.opacity  = '1';
-        _cursorRing.style.opacity = '1';
+      // Primeira vez: teletransporta o ring para o cursor antes de mostrar
+      if (_rx === null) {
+        _rx = _cx;
+        _ry = _cy;
       }
+      _cursorDot.style.visibility  = 'visible';
+      _cursorRing.style.visibility = 'visible';
     });
 
-    // Hover suave — apenas borda, sem grow exagerado
+    // Hover — muda cor da borda
     document.addEventListener('mouseover', e => {
       const el = e.target.closest('a, button, [role="button"], .radio-option, .plan-card, .step-card');
       _cursorRing.classList.toggle('cursor-hover', !!el);
     });
 
+    // Sai da janela: esconde
     document.addEventListener('mouseleave', () => {
-      _cursorDot.style.opacity  = '0';
-      _cursorRing.style.opacity = '0';
+      _cursorDot.style.visibility  = 'hidden';
+      _cursorRing.style.visibility = 'hidden';
     });
-    document.addEventListener('mouseenter', () => {
-      _cursorDot.style.opacity  = '1';
-      _cursorRing.style.opacity = '1';
+    document.addEventListener('mouseenter', e => {
+      // Já temos posição — mostrar
+      if (_cx !== null) {
+        _cursorDot.style.visibility  = 'visible';
+        _cursorRing.style.visibility = 'visible';
+      }
     });
 
     _tickCursor();
   }
 
   function _tickCursor() {
-    if (_cursorDot) {
-      _cursorDot.style.transform = `translate(${_cx - 4}px, ${_cy - 4}px)`;
+    // Sem posição ainda → aguarda
+    if (_cx === null || _cursorDot === undefined) {
+      requestAnimationFrame(_tickCursor);
+      return;
     }
-    // Lag mais suave — 0.08 em vez de 0.12 → ring segue devagar
-    _rx += (_cx - _rx) * 0.08;
-    _ry += (_cy - _ry) * 0.08;
-    if (_cursorRing) {
-      _cursorRing.style.transform = `translate(${_rx - 20}px, ${_ry - 20}px)`;
-    }
+
+    // Dot — segue exatamente (centralizado pelo raio DOT_SIZE/2)
+    _cursorDot.style.transform = `translate(${_cx - DOT_SIZE / 2}px, ${_cy - DOT_SIZE / 2}px)`;
+
+    // Ring — lag suave; centralizado pelo raio RING_SIZE/2
+    _rx += (_cx - _rx) * 0.09;
+    _ry += (_cy - _ry) * 0.09;
+    _cursorRing.style.transform = `translate(${_rx - RING_SIZE / 2}px, ${_ry - RING_SIZE / 2}px)`;
+
     requestAnimationFrame(_tickCursor);
   }
 
