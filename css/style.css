@@ -91,7 +91,7 @@ button, a { cursor: pointer; }
 }
 @keyframes ticker {
   0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(-100%); }
 }
 @keyframes borderDash {
   to { stroke-dashoffset: 0; }
@@ -703,17 +703,19 @@ body {
 .partners-track {
   flex: 1;
   overflow: hidden;
+  display: flex;
   /* fade nas bordas para suavizar a entrada/saída */
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
           mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
 }
-/* a lista corre dentro do track */
+/* cada lista ocupa exactamente metade do conteúdo total — a animação desloca -100% da própria largura */
 .partners-list {
   display: flex;
   align-items: center;
   gap: 2rem;
+  padding-right: 2rem; /* espaço entre as duas cópias */
   white-space: nowrap;
-  width: max-content;
+  flex-shrink: 0;
   animation: ticker 24s linear infinite;
   will-change: transform;
 }
