@@ -3697,3 +3697,113 @@ input[type="range"]::-webkit-slider-thumb {
   justify-content: center;
   padding-top: .5rem;
 }
+
+/* ═══════════════════════════════════════════
+   COMO FUNCIONA — Tabs B2B / B2C
+═══════════════════════════════════════════ */
+.cf-tabs {
+  display: flex;
+  gap: .5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+.cf-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: .8rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .7rem 1.4rem;
+  border: 2px solid rgba(255,255,255,.15);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: all .15s;
+}
+.cf-tab:hover {
+  border-color: rgba(170,255,0,.4);
+  color: var(--color-white);
+}
+.cf-tab--active {
+  background: var(--color-accent-primary);
+  border-color: var(--color-accent-primary);
+  color: var(--color-black);
+  box-shadow: var(--shadow-hard);
+}
+.cf-tab--active svg { stroke: var(--color-black); }
+
+/* Label de painel */
+.cf-panel-label {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: .7rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.cf-panel-label::before {
+  content: '';
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--color-muted);
+}
+.cf-panel-label--verde { color: var(--color-accent-primary); }
+.cf-panel-label--verde::before { background: var(--color-accent-primary); }
+
+/* Bloco de conexão */
+.cf-conexao { padding: 5rem 0; }
+
+.cf-conexao-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .cf-conexao-grid {
+    grid-template-columns: 1fr;
+    gap: .5rem;
+  }
+  .cf-conexao-seta { transform: rotate(90deg); text-align: center; }
+}
+
+.cf-conexao-item {
+  background: var(--color-surface-card);
+  border: 1.5px solid rgba(255,255,255,.08);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  text-align: center;
+}
+.cf-conexao-num {
+  font-family: var(--font-title);
+  font-weight: 900;
+  font-size: 2rem;
+  color: var(--color-accent-primary);
+  line-height: 1;
+  letter-spacing: -.04em;
+}
+.cf-conexao-txt {
+  font-size: .8rem;
+  color: var(--color-muted);
+  line-height: 1.55;
+}
+.cf-conexao-seta {
+  font-family: var(--font-title);
+  font-weight: 900;
+  font-size: 1.4rem;
+  color: rgba(170,255,0,.4);
+  text-align: center;
+  flex-shrink: 0;
+}

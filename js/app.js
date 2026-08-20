@@ -288,3 +288,31 @@ const AuthUI = (() => {
 
   return { submitLogin, submitCadastro, toggleSenha, entrarComoVisitante };
 })();
+
+/* ==========================================================
+   CfTabs — alternância de painéis na página Como Funciona
+   ========================================================== */
+const CfTabs = (() => {
+  function show(perfil) {
+    /* Painéis */
+    const b2b = document.getElementById('cf-panel-b2b');
+    const b2c = document.getElementById('cf-panel-b2c');
+    if (!b2b || !b2c) return;
+    b2b.style.display = perfil === 'b2b' ? '' : 'none';
+    b2c.style.display = perfil === 'b2c' ? '' : 'none';
+
+    /* Tabs */
+    const tabB2b = document.getElementById('cf-tab-b2b');
+    const tabB2c = document.getElementById('cf-tab-b2c');
+    if (tabB2b) {
+      tabB2b.classList.toggle('cf-tab--active', perfil === 'b2b');
+      tabB2b.setAttribute('aria-selected', String(perfil === 'b2b'));
+    }
+    if (tabB2c) {
+      tabB2c.classList.toggle('cf-tab--active', perfil === 'b2c');
+      tabB2c.setAttribute('aria-selected', String(perfil === 'b2c'));
+    }
+  }
+
+  return { show };
+})();
