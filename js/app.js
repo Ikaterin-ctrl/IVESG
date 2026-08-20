@@ -67,6 +67,7 @@ const App = (() => {
     if (pageId === 'diagnostico') Diagnostico.render();
     if (pageId === 'resultado')   Resultado.render();
     if (pageId === 'feedback')    FbkForm.init();
+    if (pageId === 'pessoas')     PessoasForm.init();
 
     // Animação de entrada da página (scroll reveal, etc.)
     if (typeof Anim !== 'undefined') Anim.pageEnter();
@@ -105,7 +106,7 @@ const App = (() => {
     const map = {
       home: 'início', dashboard: 'dashboard', diagnostico: 'diagnóstico',
       resultado: 'resultado', planos: 'planos', 'como-funciona': 'como funciona',
-      login: 'entrar', cadastro: 'cadastro'
+      login: 'entrar', cadastro: 'cadastro', pessoas: 'para famílias'
     };
     return map[id] || id;
   }

@@ -3082,3 +3082,284 @@ input[type="range"]::-webkit-slider-thumb {
   .feedback-right { padding: 2rem 1rem; }
   .feedback-card { padding: 1.5rem 1.2rem; }
 }
+
+/* ═══════════════════════════════════════════
+   PÁGINA PESSOAS / FAMÍLIAS — B2C
+═══════════════════════════════════════════ */
+
+/* Link de nav em destaque para Famílias */
+.nav-link-pessoas {
+  color: var(--color-accent-primary) !important;
+}
+.nav-link-pessoas::after { transform: scaleX(1) !important; }
+
+/* ── Mockup B2C: badge de status de coleta ── */
+.mock-coleta-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .2rem;
+}
+.mock-coleta-badge {
+  display: inline-block;
+  background: rgba(170,255,0,.15);
+  border: 1px solid rgba(170,255,0,.35);
+  color: var(--color-accent-primary);
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .22rem .55rem;
+  border-radius: 2px;
+}
+.mock-coleta-id {
+  font-size: .6rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.35);
+  letter-spacing: .06em;
+}
+
+/* ── EcoPontos row no mockup ── */
+.mock-ecopontos-row {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  background: rgba(170,255,0,.06);
+  border: 1px solid rgba(170,255,0,.15);
+  border-radius: 4px;
+  padding: .5rem .8rem;
+  margin-top: .2rem;
+}
+.mock-ecopontos-label {
+  flex: 1;
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.mock-ecopontos-val {
+  font-family: var(--font-title);
+  font-weight: 900;
+  font-size: .9rem;
+  color: var(--color-accent-primary);
+  letter-spacing: -.02em;
+}
+
+/* ── Grid de resíduos ── */
+.residuos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+@media (max-width: 768px) {
+  .residuos-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .residuos-grid { grid-template-columns: 1fr 1fr; gap: .8rem; }
+}
+
+.residuo-card {
+  background: var(--color-surface-card);
+  border: 2px solid rgba(255,255,255,.08);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  transition: border-color .15s, box-shadow .15s;
+  cursor: default;
+}
+.residuo-card:hover {
+  border-color: var(--color-accent-primary);
+  box-shadow: var(--shadow-hard-accent);
+}
+.residuo-icon {
+  width: 48px; height: 48px;
+  background: rgba(170,255,0,.08);
+  border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+}
+.residuo-name {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-white);
+}
+.residuo-examples {
+  font-size: .72rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+.residuo-pts {
+  font-family: var(--font-title);
+  font-weight: 900;
+  font-size: .88rem;
+  color: var(--color-accent-primary);
+  letter-spacing: -.01em;
+  margin-top: auto;
+}
+
+/* ── EcoPontos — níveis ── */
+.ecopontos-niveis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+@media (max-width: 768px) {
+  .ecopontos-niveis { grid-template-columns: 1fr; }
+}
+
+.ecoponto-card {
+  background: var(--color-surface-card);
+  border: 2px solid rgba(255,255,255,.1);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  transition: transform .18s cubic-bezier(.16,1,.3,1), box-shadow .18s;
+}
+.ecoponto-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-hard);
+}
+.ecoponto-card--destaque {
+  border-color: var(--color-accent-primary);
+  box-shadow: var(--shadow-hard-accent);
+  background: var(--color-surface-mid);
+}
+
+.ecoponto-emoji {
+  font-size: 2rem;
+  line-height: 1;
+}
+.ecoponto-nivel {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--color-accent-primary);
+}
+.ecoponto-range {
+  font-family: var(--font-title);
+  font-weight: 900;
+  font-size: 1rem;
+  color: var(--color-white);
+  letter-spacing: -.01em;
+}
+.ecoponto-lista {
+  list-style: none;
+  padding: 0;
+  margin-top: .4rem;
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+.ecoponto-lista li {
+  font-size: .8rem;
+  color: var(--color-muted);
+  padding-left: 1.1rem;
+  position: relative;
+}
+.ecoponto-lista li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-primary);
+  font-weight: 700;
+}
+.ecopontos-nota {
+  text-align: center;
+  font-size: .78rem;
+  color: var(--color-muted);
+  letter-spacing: .04em;
+}
+
+/* ── Formulário de coleta B2C ── */
+.pessoas-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Seleção visual de resíduo */
+.residuo-select-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .7rem;
+  margin-top: .5rem;
+}
+@media (max-width: 480px) {
+  .residuo-select-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.residuo-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  background: var(--color-surface-card);
+  border: 2px solid rgba(255,255,255,.12);
+  border-radius: var(--radius);
+  padding: .9rem .5rem;
+  font-family: var(--font-body);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color .15s, color .15s, background .15s;
+}
+.residuo-btn:hover {
+  border-color: rgba(170,255,0,.5);
+  color: var(--color-white);
+}
+.residuo-btn--active {
+  border-color: var(--color-accent-primary);
+  background: rgba(170,255,0,.08);
+  color: var(--color-accent-primary);
+  box-shadow: var(--shadow-hard-accent);
+}
+.residuo-btn--active svg { stroke: var(--color-accent-primary); }
+
+/* Campos do formulário */
+.form-required { color: var(--color-accent-primary); font-weight: 700; }
+.form-hint {
+  font-size: .75rem;
+  color: var(--color-accent-primary);
+  margin-top: .3rem;
+  opacity: .8;
+}
+.form-check-label {
+  display: flex;
+  align-items: flex-start;
+  gap: .7rem;
+  font-size: .82rem;
+  color: var(--color-muted);
+  cursor: pointer;
+  line-height: 1.5;
+}
+.form-check {
+  width: 18px; height: 18px;
+  flex-shrink: 0;
+  accent-color: var(--color-accent-primary);
+  margin-top: 2px;
+  cursor: pointer;
+}
+.form-link {
+  color: var(--color-accent-primary);
+  text-decoration: underline;
+}
+
+/* Tela de sucesso coleta */
+.pessoas-success {
+  text-align: center;
+  padding: 3rem 1rem;
+  animation: fadeUp .4s cubic-bezier(.16,1,.3,1) forwards;
+}
