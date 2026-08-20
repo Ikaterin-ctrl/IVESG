@@ -96,7 +96,10 @@ const Anim = (() => {
   const PARTICLE_COUNT = 28; // era 55
 
   function _initParticles() {
-    _canvas = document.getElementById('hero-canvas');
+    // Inicia partículas em qualquer canvas hero visível (home ou pessoas)
+    const canvasId = document.getElementById('pessoas-canvas')?.closest('.page.active')
+      ? 'pessoas-canvas' : 'hero-canvas';
+    _canvas = document.getElementById(canvasId) || document.getElementById('hero-canvas');
     if (!_canvas) return;
     _ctx = _canvas.getContext('2d');
     _resizeCanvas();
@@ -270,7 +273,8 @@ const Anim = (() => {
      está acontecendo?".
   ══════════════════════════════ */
   function _initHeroText() {
-    const lines = document.querySelectorAll('.hero-title-white, .hero-title-accent');
+    // Funciona tanto no hero-split (home) quanto no hero B2C (pessoas)
+    const lines = document.querySelectorAll('.hero-title-white, .hero-title-accent, .hero-split-top .hero-title span');
     lines.forEach((line, i) => {
       line.style.opacity   = '0';
       line.style.transform = 'translateY(32px)';
@@ -281,10 +285,14 @@ const Anim = (() => {
       });
     });
 
-    const seq = ['.hero-badge', '.hero-subtitle', '.hero-cta-group', '.hero-stats'];
+    // Sequência de fade-in para elementos de suporte
+    const seq = ['.hero-badge', '.hero-subtitle', '.hero-cta-group', '.hero-stats',
+                 '.hero-split-top .hero-badge', '.hero-split-cards', '.hero-split-stats'];
+    const seen = new Set();
     seq.forEach((sel, i) => {
       const el = document.querySelector(sel);
-      if (!el) return;
+      if (!el || seen.has(el)) return;
+      seen.add(el);
       el.style.opacity   = '0';
       el.style.transform = 'translateY(20px)';
       el.style.transition = `opacity .55s ${580 + i * 100}ms cubic-bezier(.16,1,.3,1), transform .55s ${580 + i * 100}ms cubic-bezier(.16,1,.3,1)`;
@@ -294,7 +302,7 @@ const Anim = (() => {
       });
     });
 
-    // Hero right: entra da direita, sem float perpétuo
+    // Hero right: entra da direita (só no hero B2C com .hero-right)
     const hr = document.querySelector('.hero-right');
     if (hr) {
       hr.style.opacity   = '0';

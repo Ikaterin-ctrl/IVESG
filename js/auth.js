@@ -129,13 +129,15 @@ const Auth = (() => {
           </a>
         </div>`;
 
-      // Links do mobile overlay também
+      // Links do mobile overlay — substitui último item da lista pelo logout
       const mobileList = document.querySelector('#nav-mobile-overlay ul');
       if (mobileList) {
-        // Remove o item "ACESSAR PLATAFORMA" do mobile e adiciona logout
         const lastLi = mobileList.querySelector('li:last-child');
         if (lastLi) lastLi.innerHTML = `<a href="#" onclick="Auth.logout();App.toggleMenu();return false;">SAIR DA CONTA</a>`;
       }
+      // Esconde botão de descartar no mobile quando logado (usuário B2B)
+      const mobileDescartar = document.querySelector('.nav-mobile-descartar');
+      if (mobileDescartar) mobileDescartar.style.display = '';
     } else {
       // Não logado: botão entrar
       navActionsHtml.innerHTML = `
@@ -149,6 +151,8 @@ const Auth = (() => {
         const lastLi = mobileList.querySelector('li:last-child');
         if (lastLi) lastLi.innerHTML = `<a href="#" onclick="App.goTo('login');App.toggleMenu();return false;">ACESSAR PLATAFORMA</a>`;
       }
+      const mobileDescartar = document.querySelector('.nav-mobile-descartar');
+      if (mobileDescartar) mobileDescartar.style.display = '';
     }
   }
 

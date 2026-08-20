@@ -9,7 +9,7 @@ const DATA = {
     cnpj: '12.345.678/0001-99',
     segmento: 'Indústria Farmacêutica',
     estado: 'SP',
-    plano: 'PRO'
+    plano: 'PRO'  // demo visitor usa PRO para mostrar o dashboard completo
   },
 
   /* ── Pilares ESG ── */

@@ -106,7 +106,7 @@ const App = (() => {
     const map = {
       home: 'início', dashboard: 'dashboard', diagnostico: 'diagnóstico',
       resultado: 'resultado', planos: 'planos', 'como-funciona': 'como funciona',
-      login: 'entrar', cadastro: 'cadastro', pessoas: 'para famílias'
+      login: 'entrar', cadastro: 'cadastro', pessoas: 'descartar'
     };
     return map[id] || id;
   }
@@ -221,7 +221,7 @@ const AuthUI = (() => {
       _setLoading(btn, false);
       if (result.ok) {
         const user = Auth.getUser();
-        App.toast(`Bem-vinda de volta, ${user.nome.split(' ')[0]}!`);
+        App.toast(`Bem-vindo de volta, ${user.nome.split(' ')[0]}!`);
         App.goTo('dashboard');
       } else {
         _showError(errEl, result.msg);
