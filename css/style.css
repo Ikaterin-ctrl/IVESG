@@ -279,6 +279,38 @@ body {
 .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
 .nav-link.active { color: var(--color-accent-primary); }
 
+/* Separador vertical entre links B2B e CTA B2C */
+.nav-sep {
+  width: 1px;
+  height: 18px;
+  background: rgba(255,255,255,.15);
+  align-self: center;
+  margin: 0 .4rem;
+  flex-shrink: 0;
+}
+
+/* Botão "QUERO DESCARTAR" com pill verde destacado */
+.nav-link-descartar {
+  display: inline-flex !important;
+  align-items: center;
+  gap: .4rem;
+  background: var(--color-accent-primary) !important;
+  color: var(--color-black) !important;
+  border: 2px solid var(--color-black) !important;
+  box-shadow: 3px 3px 0 var(--color-black);
+  font-weight: 700 !important;
+  padding: .35rem .85rem !important;
+  border-radius: var(--radius) !important;
+  white-space: nowrap;
+  transition: transform .12s, box-shadow .12s !important;
+}
+.nav-link-descartar::after { display: none !important; }
+.nav-link-descartar:hover {
+  color: var(--color-black) !important;
+  transform: translate(-2px,-2px);
+  box-shadow: 5px 5px 0 var(--color-black);
+}
+
 .nav-actions { margin-left: auto; }
 
 .btn-nav {
@@ -353,6 +385,38 @@ body {
   transition: color .15s;
 }
 .nav-mobile-overlay a:hover { color: var(--color-accent-primary); }
+
+/* Separador de seção no mobile */
+.nav-mobile-sep {
+  font-family: var(--font-body);
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  padding: 1.5rem 0 .75rem;
+  border-top: 1px solid rgba(255,255,255,.1);
+  margin-top: .5rem;
+}
+
+/* Botão B2C destacado no menu mobile */
+.nav-mobile-descartar {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  background: var(--color-accent-primary);
+  color: var(--color-black) !important;
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: .9rem 1.2rem;
+  border-radius: var(--radius);
+  border: 2px solid var(--color-black);
+  box-shadow: 4px 4px 0 var(--color-black);
+}
+.nav-mobile-descartar:hover { color: var(--color-black) !important; }
 
 /* ═══════════════════════════════════════════
    PÁGINAS SPA — transições de entrada/saída

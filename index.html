@@ -29,7 +29,13 @@
       <li><a href="#" class="nav-link" onclick="App.goTo('home');return false;">INÍCIO</a></li>
       <li><a href="#" class="nav-link" onclick="App.goTo('como-funciona');return false;">COMO FUNCIONA</a></li>
       <li><a href="#" class="nav-link" onclick="App.goTo('planos');return false;">PLANOS</a></li>
-      <li><a href="#" class="nav-link nav-link-pessoas" onclick="App.goTo('pessoas');return false;">QUERO DESCARTAR</a></li>
+      <li class="nav-sep" aria-hidden="true"></li>
+      <li>
+        <a href="#" class="nav-link nav-link-descartar" onclick="App.goTo('pessoas');return false;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+          QUERO DESCARTAR
+        </a>
+      </li>
     </ul>
     <div class="nav-actions" id="nav-actions">
       <!-- Preenchido por auth.js._syncUI() -->
@@ -45,9 +51,13 @@
       <li><a href="#" onclick="App.goTo('home');App.toggleMenu();return false;">INÍCIO</a></li>
       <li><a href="#" onclick="App.goTo('como-funciona');App.toggleMenu();return false;">COMO FUNCIONA</a></li>
       <li><a href="#" onclick="App.goTo('planos');App.toggleMenu();return false;">PLANOS</a></li>
-      <li><a href="#" onclick="App.goTo('pessoas');App.toggleMenu();return false;">QUERO DESCARTAR</a></li>
       <li><a href="#" onclick="App.goTo('login');App.toggleMenu();return false;">ACESSAR PLATAFORMA</a></li>
     </ul>
+    <div class="nav-mobile-sep" aria-hidden="true">QUERO DESCARTAR</div>
+    <a href="#" class="nav-mobile-descartar" onclick="App.goTo('pessoas');App.toggleMenu();return false;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+      REGISTRAR DESCARTE
+    </a>
   </div>
 
   <!-- ═══════════════════════════════════════════
