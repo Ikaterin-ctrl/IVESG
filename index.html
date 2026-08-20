@@ -215,64 +215,119 @@
         </div>
       </div>
 
-      <!-- COMO FUNCIONA (preview na home) -->
+      <!-- COMO FUNCIONA (preview na home) — tabs B2B / B2C -->
       <div class="section-como-funciona" id="como-funciona-home">
         <div class="section-inner">
-          <div class="section-header-row reveal">
+
+          <!-- Cabeçalho + tabs -->
+          <div class="section-header-row reveal" style="flex-wrap:wrap;gap:1rem 2rem;align-items:flex-start">
             <h2 class="section-title-dark">COMO<br>FUNCIONA</h2>
-            <a href="#" class="btn btn-dark-outline" onclick="App.goTo('cadastro');return false;">
-              INICIAR AGORA
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-          <div class="steps-row stagger reveal">
-            <div class="step-card reveal">
-              <div class="step-number">01</div>
-              <div class="step-body">
-                <div class="step-icon-wrap">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true">
-                    <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
-                    <rect x="9" y="3" width="6" height="4" rx="1"/>
-                    <path d="M9 12h6M9 16h4"/>
-                  </svg>
-                </div>
-                <h3 class="step-title">DIAGNÓSTICO</h3>
-                <p class="step-desc">Responda perguntas objetivas sobre sua operação nos três pilares ESG. Leva menos de 10 minutos.</p>
-              </div>
-            </div>
-            <div class="step-connector" aria-hidden="true">
-              <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/></svg>
-            </div>
-            <div class="step-card reveal">
-              <div class="step-number">02</div>
-              <div class="step-body">
-                <div class="step-icon-wrap">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"/>
-                    <path d="M12 6v6l4 2"/>
-                  </svg>
-                </div>
-                <h3 class="step-title">SCORE &amp; ANÁLISE</h3>
-                <p class="step-desc">Receba seu Score ESG de 0 a 100 com análise detalhada por pilar e benchmarking do setor.</p>
-              </div>
-            </div>
-            <div class="step-connector" aria-hidden="true">
-              <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/></svg>
-            </div>
-            <div class="step-card reveal">
-              <div class="step-number">03</div>
-              <div class="step-body">
-                <div class="step-icon-wrap">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                    <path d="M22 4L12 14.01l-3-3"/>
-                  </svg>
-                </div>
-                <h3 class="step-title">PLANO DE AÇÃO</h3>
-                <p class="step-desc">Acesse recomendações priorizadas e acompanhe sua evolução mês a mês no dashboard integrado.</p>
+            <div style="display:flex;flex-direction:column;gap:1rem;flex:1;min-width:220px">
+              <div class="cf-tabs cf-tabs--dark" role="tablist" aria-label="Selecionar perfil — como funciona">
+                <button class="cf-tab cf-tab--dark cf-tab--dark-active" id="home-tab-b2b" role="tab"
+                        aria-selected="true" aria-controls="home-panel-b2b"
+                        onclick="CfTabs.showHome('b2b')">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  EMPRESAS
+                </button>
+                <button class="cf-tab cf-tab--dark" id="home-tab-b2c" role="tab"
+                        aria-selected="false" aria-controls="home-panel-b2c"
+                        onclick="CfTabs.showHome('b2c')">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+                  QUERO DESCARTAR
+                </button>
               </div>
             </div>
           </div>
+
+          <!-- Painel B2B -->
+          <div id="home-panel-b2b" role="tabpanel" aria-labelledby="home-tab-b2b">
+            <div class="steps-row stagger">
+              <div class="step-card">
+                <div class="step-number">01</div>
+                <div class="step-body">
+                  <div class="step-icon-wrap">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+                  </div>
+                  <h3 class="step-title">DIAGNÓSTICO</h3>
+                  <p class="step-desc">Responda perguntas objetivas sobre sua operação nos três pilares ESG. Leva menos de 10 minutos.</p>
+                </div>
+              </div>
+              <div class="step-connector" aria-hidden="true"><svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/></svg></div>
+              <div class="step-card">
+                <div class="step-number">02</div>
+                <div class="step-body">
+                  <div class="step-icon-wrap">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  </div>
+                  <h3 class="step-title">SCORE &amp; ANÁLISE</h3>
+                  <p class="step-desc">Receba seu Score ESG de 0 a 100 com análise detalhada por pilar e benchmarking do setor.</p>
+                </div>
+              </div>
+              <div class="step-connector" aria-hidden="true"><svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/></svg></div>
+              <div class="step-card">
+                <div class="step-number">03</div>
+                <div class="step-body">
+                  <div class="step-icon-wrap">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                  </div>
+                  <h3 class="step-title">PLANO DE AÇÃO</h3>
+                  <p class="step-desc">Acesse recomendações priorizadas e acompanhe sua evolução mês a mês no dashboard integrado.</p>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top:2rem">
+              <a href="#" class="btn btn-dark-outline" onclick="App.goTo('cadastro');return false;">
+                INICIAR AGORA
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Painel B2C -->
+          <div id="home-panel-b2c" role="tabpanel" aria-labelledby="home-tab-b2c" style="display:none">
+            <div class="steps-row stagger">
+              <div class="step-card">
+                <div class="step-number">01</div>
+                <div class="step-body">
+                  <div class="step-icon-wrap">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+                  </div>
+                  <h3 class="step-title">SELECIONE O RESÍDUO</h3>
+                  <p class="step-desc">Escolha o tipo de item: móvel, eletrodoméstico, entulho, eletrônico, óleo ou recicláveis. Um clique.</p>
+                </div>
+              </div>
+              <div class="step-connector" aria-hidden="true"><svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/></svg></div>
+              <div class="step-card">
+                <div class="step-number">02</div>
+                <div class="step-body">
+                  <div class="step-icon-wrap">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                  </div>
+                  <h3 class="step-title">FOTO &amp; QUANTIDADE</h3>
+                  <p class="step-desc">Tire uma foto ou descreva o item. Ajuda nossa equipe a se preparar e agiliza a coleta no dia.</p>
+                </div>
+              </div>
+              <div class="step-connector" aria-hidden="true"><svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/></svg></div>
+              <div class="step-card">
+                <div class="step-number">03</div>
+                <div class="step-body">
+                  <div class="step-icon-wrap">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </div>
+                  <h3 class="step-title">DATA E HORÁRIO</h3>
+                  <p class="step-desc">Escolha quando a equipe passa. Confirme via WhatsApp e acompanhe o trajeto em tempo real.</p>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top:2rem">
+              <a href="#" class="btn btn-dark-outline" onclick="App.goTo('pessoas');return false;">
+                AGENDAR COLETA GRÁTIS
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
 

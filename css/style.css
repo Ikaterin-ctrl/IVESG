@@ -2060,12 +2060,22 @@ input[type="range"]::-webkit-slider-thumb {
   .plan-card.featured { transform: scale(1); }
   .footer-grid { grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
   .two-col-section { gap: 2.5rem; }
+  /* Hero split: cards ainda 2 colunas mas mais apertados */
+  .hero-split-inner { padding: 3.5rem 2rem 2.5rem; gap: 2.5rem; }
+  /* Dois caminhos */
+  .dois-caminhos-grid { gap: 1.5rem; }
+  .caminho-card { padding: 2rem 1.6rem; }
 }
 
 /* ── 1024px ── */
 @media (max-width: 1024px) {
   .hero-inner { grid-template-columns: 1fr 300px; gap: 2rem; padding: 4rem 0 3rem; }
   .app-content { padding: 1.5rem; }
+  /* Hero split */
+  .hero-split-cards { gap: 1rem; }
+  .hero-choice-card { padding: 2rem 1.5rem; }
+  /* Conexão como funciona */
+  .cf-conexao-grid { gap: .7rem; }
 }
 
 /* ── 900px: colapsos principais ── */
@@ -3806,4 +3816,94 @@ input[type="range"]::-webkit-slider-thumb {
   color: rgba(170,255,0,.4);
   text-align: center;
   flex-shrink: 0;
+}
+
+/* Variante dark (fundo #AAFF00 da seção como funciona home) */
+.cf-tabs--dark { margin-top: 0; }
+
+.cf-tab--dark {
+  border-color: rgba(0,0,0,.2);
+  color: rgba(0,0,0,.5);
+  background: transparent;
+}
+.cf-tab--dark svg { stroke: rgba(0,0,0,.45); }
+.cf-tab--dark:hover {
+  border-color: rgba(0,0,0,.5);
+  color: var(--color-black);
+}
+.cf-tab--dark-active {
+  background: var(--color-black);
+  border-color: var(--color-black);
+  color: var(--color-accent-primary);
+  box-shadow: var(--shadow-hard);
+}
+.cf-tab--dark-active svg { stroke: var(--color-accent-primary); }
+
+/* Responsivo: tabs empilham em mobile */
+@media (max-width: 600px) {
+  .cf-tabs { flex-direction: column; }
+  .cf-tab  { width: 100%; justify-content: center; }
+  .section-header-row { flex-direction: column; align-items: flex-start; }
+  .cf-conexao-grid { grid-template-columns: 1fr; }
+  .cf-conexao-seta { transform: rotate(90deg); }
+
+  /* Hero split em mobile */
+  .hero-split-cards { grid-template-columns: 1fr; gap: 1rem; }
+  .hero-split-divisor { flex-direction: row; padding: .5rem 0; }
+  .hero-split-line { width: auto; height: 1px; flex: 1; }
+  .hero-choice-card { padding: 1.8rem 1.4rem; }
+  .hero-choice-title { font-size: 1.5rem; }
+
+  /* Dois caminhos */
+  .dois-caminhos-grid { grid-template-columns: 1fr; }
+  .caminho-divisor { flex-direction: row; padding: .5rem 0; }
+  .caminho-divisor-line { width: auto; height: 1px; flex: 1; }
+  .caminho-card { padding: 1.8rem 1.4rem; }
+
+  /* Resíduos e EcoPontos */
+  .residuos-grid { grid-template-columns: 1fr 1fr; }
+  .ecopontos-niveis { grid-template-columns: 1fr; }
+
+  /* Formulário B2C */
+  .residuo-select-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  /* Hero split */
+  .hero-split-inner { padding: 2.5rem 1rem 2rem; gap: 2rem; }
+  .hero-split-stats { gap: 1rem; }
+  .hero-choice-card { padding: 1.5rem 1.2rem; gap: .8rem; }
+  .hero-choice-icon { width: 52px; height: 52px; }
+  .hero-choice-title { font-size: 1.3rem; }
+
+  /* Dois caminhos */
+  .section-dois-caminhos { padding: 3rem 0; }
+  .caminho-card { padding: 1.5rem 1.2rem; }
+  .caminho-titulo { font-size: 1rem; }
+
+  /* Resíduos */
+  .residuos-grid { grid-template-columns: 1fr 1fr; gap: .7rem; }
+  .residuo-card { padding: 1.1rem 1rem; }
+
+  /* EcoPontos */
+  .ecopontos-niveis { gap: .8rem; }
+  .ecoponto-card { padding: 1.5rem 1.2rem; }
+
+  /* Conexão como funciona */
+  .cf-conexao { padding: 3rem 0; }
+  .cf-conexao-num { font-size: 1.5rem; }
+
+  /* Formulário B2C */
+  .pessoas-form { gap: 1rem; }
+  .residuo-select-grid { grid-template-columns: repeat(2, 1fr); gap: .5rem; }
+  .residuo-btn { padding: .8rem .4rem; font-size: .68rem; }
+}
+
+@media (max-width: 360px) {
+  .hero-split-inner { padding: 2rem .8rem 1.5rem; }
+  .hero-choice-title { font-size: 1.2rem; }
+  .hero-split-stats { flex-direction: column; align-items: flex-start; gap: .6rem; }
+  .hero-stat-divider { display: none; }
+  .residuos-grid { grid-template-columns: 1fr; }
+  .residuo-select-grid { grid-template-columns: repeat(2, 1fr); }
 }
