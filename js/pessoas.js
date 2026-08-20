@@ -108,7 +108,7 @@ const PessoasForm = (() => {
       const title   = document.getElementById('pessoas-success-title');
       if (form)    form.style.display    = 'none';
       if (success) success.style.display = 'block';
-      if (title)   title.textContent     = 'PEDIDO RECEBIDO, ' + nome.split(' ')[0].toUpperCase() + '!';
+      if (title)   title.textContent     = 'DESCARTE REGISTRADO, ' + nome.split(' ')[0].toUpperCase() + '!';
 
       /* Scroll para a tela de sucesso */
       if (success) success.scrollIntoView({ behavior: 'smooth', block: 'center' });
