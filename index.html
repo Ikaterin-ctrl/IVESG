@@ -58,11 +58,9 @@
     <!-- ── PAGE: HOME ── -->
     <section data-page="home" class="page active" aria-label="Página inicial">
 
-      <!-- HERO -->
-      <div class="hero">
-        <!-- Canvas de partículas -->
+      <!-- HERO — SPLIT B2B / B2C -->
+      <div class="hero hero-split">
         <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
-        <!-- Grid de pontos decorativo (fallback) -->
         <svg class="hero-dots" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
           <defs>
             <pattern id="dot-grid" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
@@ -72,130 +70,109 @@
           <rect width="100%" height="100%" fill="url(#dot-grid)"/>
         </svg>
 
-        <div class="hero-inner">
-          <div class="hero-left">
-            <div class="hero-badge" role="note">
+        <div class="hero-split-inner">
+
+          <!-- TOPO: título unificado -->
+          <div class="hero-split-top">
+            <div class="hero-badge" role="note" style="margin:0 auto">
               <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
                 <path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88H3.88Z" fill="#000"/>
               </svg>
-              ESG PARA EMPRESAS QUE CRESCEM COM RESPONSABILIDADE
+              DESCARTE RESPONSÁVEL PARA TODOS
             </div>
-
-            <h1 class="hero-title">
-              <span class="hero-title-white">MAPEIE SEU</span>
-              <span class="hero-title-accent">IMPACTO.</span>
+            <h1 class="hero-title" style="text-align:center">
+              <span class="hero-title-white">IMPACTO VERDE</span>
+              <span class="hero-title-accent">PARA QUEM É VOCÊ?</span>
             </h1>
-
-            <p class="hero-subtitle">
-              A plataforma de diagnóstico e gestão ESG feita para PMEs brasileiras. Meça, melhore e comprove seu compromisso ambiental, social e de governança.
+            <p class="hero-subtitle" style="text-align:center;margin:0 auto">
+              Uma plataforma, dois propósitos. Escolha o caminho certo para você.
             </p>
+          </div>
 
-            <div class="hero-cta-group">
-              <a href="#" class="btn btn-primary btn-lg" onclick="App.goTo('cadastro');return false;" aria-label="Criar conta gratuita">
+          <!-- CARDS DE ESCOLHA -->
+          <div class="hero-split-cards" role="group" aria-label="Escolha seu perfil">
+
+            <!-- B2B -->
+            <div class="hero-choice-card" onclick="App.goTo('cadastro')" role="button" tabindex="0"
+                 onkeydown="if(event.key==='Enter')App.goTo('cadastro')"
+                 aria-label="Sou uma empresa — acessar plataforma B2B">
+              <div class="hero-choice-pill">B2B</div>
+              <div class="hero-choice-icon" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="1.6">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              </div>
+              <h2 class="hero-choice-title">SOU UMA<br>EMPRESA</h2>
+              <p class="hero-choice-desc">Diagnóstico ESG, score por pilar, rastreabilidade de resíduos e relatórios para bancos e licitações.</p>
+              <ul class="hero-choice-lista">
+                <li>Score ESG em menos de 10 min</li>
+                <li>Dashboard + plano de ação</li>
+                <li>Relatório PDF auditável</li>
+              </ul>
+              <div class="hero-choice-cta">
                 COMEÇAR GRÁTIS
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-              <a href="#" class="btn btn-secondary-outline" onclick="App.goTo('como-funciona');return false;">
-                VER COMO FUNCIONA
-              </a>
+              </div>
             </div>
 
-            <div class="hero-stats">
-              <div class="hero-stat">
-                <span class="hero-stat-num" data-count="2400" data-prefix="+">0</span>
-                <span class="hero-stat-label">EMPRESAS AVALIADAS</span>
+            <!-- DIVISOR -->
+            <div class="hero-split-divisor" aria-hidden="true">
+              <div class="hero-split-line"></div>
+              <span class="hero-split-ou">OU</span>
+              <div class="hero-split-line"></div>
+            </div>
+
+            <!-- B2C -->
+            <div class="hero-choice-card hero-choice-card--destaque" onclick="App.goTo('pessoas')" role="button" tabindex="0"
+                 onkeydown="if(event.key==='Enter')App.goTo('pessoas')"
+                 aria-label="Sou uma família — agendar coleta domiciliar">
+              <div class="hero-choice-pill hero-choice-pill--verde">B2C</div>
+              <div class="hero-choice-icon" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.6">
+                  <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                </svg>
               </div>
-              <div class="hero-stat-divider" aria-hidden="true"></div>
-              <div class="hero-stat">
-                <span class="hero-stat-num" data-count="87" data-suffix="%">0</span>
-                <span class="hero-stat-label">MELHORARAM O SCORE</span>
+              <h2 class="hero-choice-title hero-choice-title--dark">SOU UMA<br>FAMÍLIA</h2>
+              <p class="hero-choice-desc hero-choice-desc--dark">Agende a coleta gratuita de geladeiras, eletrônicos, entulho ou móveis. Ganhe EcoPontos a cada descarte correto.</p>
+              <ul class="hero-choice-lista hero-choice-lista--dark">
+                <li>Coleta grátis em até 48h</li>
+                <li>Rastreamento em tempo real</li>
+                <li>Certificado de destinação</li>
+              </ul>
+              <div class="hero-choice-cta hero-choice-cta--dark">
+                AGENDAR COLETA GRÁTIS
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </div>
-              <div class="hero-stat-divider" aria-hidden="true"></div>
-              <div class="hero-stat">
-                <span class="hero-stat-num" data-count="100" data-suffix="%">0</span>
-                <span class="hero-stat-label">GRATUITO PARA INICIAR</span>
-              </div>
+            </div>
+
+          </div>
+
+          <!-- Stats unificados -->
+          <div class="hero-split-stats">
+            <div class="hero-stat">
+              <span class="hero-stat-num" data-count="2400" data-prefix="+">0</span>
+              <span class="hero-stat-label">EMPRESAS AVALIADAS</span>
+            </div>
+            <div class="hero-stat-divider" aria-hidden="true"></div>
+            <div class="hero-stat">
+              <span class="hero-stat-num" data-count="3800" data-prefix="+">0</span>
+              <span class="hero-stat-label">COLETAS REALIZADAS</span>
+            </div>
+            <div class="hero-stat-divider" aria-hidden="true"></div>
+            <div class="hero-stat">
+              <span class="hero-stat-num" data-count="92" data-suffix="%">0</span>
+              <span class="hero-stat-label">DESTINAÇÃO CORRETA</span>
+            </div>
+            <div class="hero-stat-divider" aria-hidden="true"></div>
+            <div class="hero-stat">
+              <span class="hero-stat-num" data-count="100" data-suffix="%">0</span>
+              <span class="hero-stat-label">GRATUITO PARA INICIAR</span>
             </div>
           </div>
 
-          <!-- MOCKUP DE UI — frame de app estilizado -->
-          <div class="hero-right" aria-hidden="true">
-            <div class="app-mockup">
-              <!-- barra de título da "janela" -->
-              <div class="app-mockup-bar">
-                <div class="app-mockup-dots">
-                  <span></span><span></span><span></span>
-                </div>
-                <div class="app-mockup-title">IMPACTO VERDE · DASHBOARD</div>
-              </div>
-
-              <!-- conteúdo interno do mockup -->
-              <div class="app-mockup-body">
-
-                <!-- linha superior: score grande + badge -->
-                <div class="mock-top-row">
-                  <div class="mock-score-block">
-                    <div class="mock-score-label">SCORE ESG</div>
-                    <div class="mock-score-num">78<span>/100</span></div>
-                    <div class="mock-score-badge">AVANÇADO · A+</div>
-                  </div>
-                  <div class="mock-ring" role="img" aria-label="Score 78 de 100">
-                    <svg width="80" height="80" viewBox="0 0 80 80">
-                      <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="7"/>
-                      <!-- arco preenchido: circunferência ≈ 201; 78% = 156.8 -->
-                      <circle cx="40" cy="40" r="32" fill="none" stroke="#AAFF00" stroke-width="7"
-                              stroke-linecap="round"
-                              stroke-dasharray="156.8 201"
-                              stroke-dashoffset="50"
-                              transform="rotate(-90 40 40)"/>
-                      <text x="40" y="45" text-anchor="middle" font-family="'Syne',sans-serif"
-                            font-weight="900" font-size="18" fill="#AAFF00">78</text>
-                    </svg>
-                  </div>
-                </div>
-
-                <!-- barras dos 3 pilares -->
-                <div class="mock-pillars">
-                  <div class="mock-pillar-row">
-                    <span class="mock-pillar-label">AMBIENTAL</span>
-                    <div class="mock-pillar-track">
-                      <div class="mock-pillar-fill" style="width:82%;background:#AAFF00"></div>
-                    </div>
-                    <span class="mock-pillar-val" style="color:#AAFF00">82</span>
-                  </div>
-                  <div class="mock-pillar-row">
-                    <span class="mock-pillar-label">SOCIAL</span>
-                    <div class="mock-pillar-track">
-                      <div class="mock-pillar-fill" style="width:71%;background:#0047FF"></div>
-                    </div>
-                    <span class="mock-pillar-val" style="color:#0047FF">71</span>
-                  </div>
-                  <div class="mock-pillar-row">
-                    <span class="mock-pillar-label">GOVERNANÇA</span>
-                    <div class="mock-pillar-track">
-                      <div class="mock-pillar-fill" style="width:88%;background:#7B00FF"></div>
-                    </div>
-                    <span class="mock-pillar-val" style="color:#7B00FF">88</span>
-                  </div>
-                </div>
-
-                <!-- linha de ação recomendada -->
-                <div class="mock-action-row">
-                  <div class="mock-action-icon">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                  </div>
-                  <div class="mock-action-text">
-                    <div class="mock-action-label">PRÓXIMA AÇÃO</div>
-                    <div class="mock-action-desc">Implementar gestão de resíduos sólidos</div>
-                  </div>
-                  <div class="mock-action-arrow">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
