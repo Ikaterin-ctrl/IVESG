@@ -67,6 +67,7 @@ const App = (() => {
     if (pageId === 'diagnostico') Diagnostico.render();
     if (pageId === 'resultado')   Resultado.render();
     if (pageId === 'feedback')    FbkForm.init();
+    if (pageId === 'pessoas')     PessoasForm.init();
 
     // Animação de entrada da página (scroll reveal, etc.)
     if (typeof Anim !== 'undefined') Anim.pageEnter();
@@ -105,7 +106,7 @@ const App = (() => {
     const map = {
       home: 'início', dashboard: 'dashboard', diagnostico: 'diagnóstico',
       resultado: 'resultado', planos: 'planos', 'como-funciona': 'como funciona',
-      login: 'entrar', cadastro: 'cadastro'
+      login: 'entrar', cadastro: 'cadastro', pessoas: 'descartar'
     };
     return map[id] || id;
   }
@@ -220,7 +221,7 @@ const AuthUI = (() => {
       _setLoading(btn, false);
       if (result.ok) {
         const user = Auth.getUser();
-        App.toast(`Bem-vinda de volta, ${user.nome.split(' ')[0]}!`);
+        App.toast(`Bem-vindo de volta, ${user.nome.split(' ')[0]}!`);
         App.goTo('dashboard');
       } else {
         _showError(errEl, result.msg);
@@ -286,4 +287,39 @@ const AuthUI = (() => {
   }
 
   return { submitLogin, submitCadastro, toggleSenha, entrarComoVisitante };
+})();
+
+/* ==========================================================
+   CfTabs — alternância de painéis na página Como Funciona
+   ========================================================== */
+const CfTabs = (() => {
+  /* Página dedicada Como Funciona */
+  function show(perfil) {
+    _toggle(perfil,
+      'cf-panel-b2b', 'cf-panel-b2c',
+      'cf-tab-b2b',   'cf-tab-b2c',
+      'cf-tab--active');
+  }
+
+  /* Preview da Home */
+  function showHome(perfil) {
+    _toggle(perfil,
+      'home-panel-b2b', 'home-panel-b2c',
+      'home-tab-b2b',   'home-tab-b2c',
+      'cf-tab--dark-active');
+  }
+
+  function _toggle(perfil, idPanelA, idPanelB, idTabA, idTabB, activeClass) {
+    const panelA = document.getElementById(idPanelA);
+    const panelB = document.getElementById(idPanelB);
+    if (panelA) panelA.style.display = perfil === 'b2b' ? '' : 'none';
+    if (panelB) panelB.style.display = perfil === 'b2c' ? '' : 'none';
+
+    const tabA = document.getElementById(idTabA);
+    const tabB = document.getElementById(idTabB);
+    if (tabA) { tabA.classList.toggle(activeClass, perfil === 'b2b'); tabA.setAttribute('aria-selected', String(perfil === 'b2b')); }
+    if (tabB) { tabB.classList.toggle(activeClass, perfil === 'b2c'); tabB.setAttribute('aria-selected', String(perfil === 'b2c')); }
+  }
+
+  return { show, showHome };
 })();

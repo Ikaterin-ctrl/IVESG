@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Impacto Verde ESG — Plataforma ESG para PMEs</title>
+  <title>Impacto Verde ESG — Gestão ESG para Empresas e Descarte Consciente</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -29,6 +29,13 @@
       <li><a href="#" class="nav-link" onclick="App.goTo('home');return false;">INÍCIO</a></li>
       <li><a href="#" class="nav-link" onclick="App.goTo('como-funciona');return false;">COMO FUNCIONA</a></li>
       <li><a href="#" class="nav-link" onclick="App.goTo('planos');return false;">PLANOS</a></li>
+      <li class="nav-sep" aria-hidden="true"></li>
+      <li>
+        <a href="#" class="nav-link nav-link-descartar" onclick="App.goTo('pessoas');return false;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+          QUERO DESCARTAR
+        </a>
+      </li>
     </ul>
     <div class="nav-actions" id="nav-actions">
       <!-- Preenchido por auth.js._syncUI() -->
@@ -46,6 +53,11 @@
       <li><a href="#" onclick="App.goTo('planos');App.toggleMenu();return false;">PLANOS</a></li>
       <li><a href="#" onclick="App.goTo('login');App.toggleMenu();return false;">ACESSAR PLATAFORMA</a></li>
     </ul>
+    <div class="nav-mobile-sep" aria-hidden="true">QUERO DESCARTAR</div>
+    <a href="#" class="nav-mobile-descartar" onclick="App.goTo('pessoas');App.toggleMenu();return false;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+      REGISTRAR DESCARTE
+    </a>
   </div>
 
   <!-- ═══════════════════════════════════════════
@@ -56,11 +68,9 @@
     <!-- ── PAGE: HOME ── -->
     <section data-page="home" class="page active" aria-label="Página inicial">
 
-      <!-- HERO -->
-      <div class="hero">
-        <!-- Canvas de partículas -->
+      <!-- HERO — SPLIT B2B / B2C -->
+      <div class="hero hero-split">
         <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
-        <!-- Grid de pontos decorativo (fallback) -->
         <svg class="hero-dots" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
           <defs>
             <pattern id="dot-grid" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
@@ -70,130 +80,109 @@
           <rect width="100%" height="100%" fill="url(#dot-grid)"/>
         </svg>
 
-        <div class="hero-inner">
-          <div class="hero-left">
-            <div class="hero-badge" role="note">
+        <div class="hero-split-inner">
+
+          <!-- TOPO: título unificado -->
+          <div class="hero-split-top">
+            <div class="hero-badge" role="note" style="margin:0 auto">
               <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
                 <path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88H3.88Z" fill="#000"/>
               </svg>
-              ESG PARA EMPRESAS QUE CRESCEM COM RESPONSABILIDADE
+              IVESG · ESG PARA EMPRESAS · DESCARTE CONSCIENTE
             </div>
-
-            <h1 class="hero-title">
-              <span class="hero-title-white">MAPEIE SEU</span>
-              <span class="hero-title-accent">IMPACTO.</span>
+            <h1 class="hero-title" style="text-align:center">
+              <span class="hero-title-white">DESCARTE CERTO.</span>
+              <span class="hero-title-accent">IMPACTO REAL.</span>
             </h1>
-
-            <p class="hero-subtitle">
-              A plataforma de diagnóstico e gestão ESG feita para PMEs brasileiras. Meça, melhore e comprove seu compromisso ambiental, social e de governança.
+            <p class="hero-subtitle" style="text-align:center;margin:0 auto">
+              Para empresas que precisam comprovar ESG. Para quem quer descartar no lugar certo.
             </p>
+          </div>
 
-            <div class="hero-cta-group">
-              <a href="#" class="btn btn-primary btn-lg" onclick="App.goTo('cadastro');return false;" aria-label="Criar conta gratuita">
+          <!-- CARDS DE ESCOLHA -->
+          <div class="hero-split-cards" role="group" aria-label="Escolha seu perfil">
+
+            <!-- B2B -->
+            <div class="hero-choice-card" onclick="App.goTo('cadastro')" role="button" tabindex="0"
+                 onkeydown="if(event.key==='Enter')App.goTo('cadastro')"
+                 aria-label="Sou uma empresa — acessar plataforma B2B">
+              <div class="hero-choice-pill">B2B</div>
+              <div class="hero-choice-icon" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="1.6">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              </div>
+              <h2 class="hero-choice-title">SOU UMA<br>EMPRESA</h2>
+              <p class="hero-choice-desc">Diagnóstico ESG, score por pilar, rastreabilidade de resíduos e relatórios para bancos e licitações.</p>
+              <ul class="hero-choice-lista">
+                <li>Score ESG em menos de 10 min</li>
+                <li>Dashboard + plano de ação</li>
+                <li>Relatório PDF auditável</li>
+              </ul>
+              <div class="hero-choice-cta">
                 COMEÇAR GRÁTIS
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-              <a href="#" class="btn btn-secondary-outline" onclick="App.goTo('como-funciona');return false;">
-                VER COMO FUNCIONA
-              </a>
+              </div>
             </div>
 
-            <div class="hero-stats">
-              <div class="hero-stat">
-                <span class="hero-stat-num" data-count="2400" data-prefix="+">0</span>
-                <span class="hero-stat-label">EMPRESAS AVALIADAS</span>
+            <!-- DIVISOR -->
+            <div class="hero-split-divisor" aria-hidden="true">
+              <div class="hero-split-line"></div>
+              <span class="hero-split-ou">OU</span>
+              <div class="hero-split-line"></div>
+            </div>
+
+            <!-- B2C -->
+            <div class="hero-choice-card hero-choice-card--destaque" onclick="App.goTo('pessoas')" role="button" tabindex="0"
+                 onkeydown="if(event.key==='Enter')App.goTo('pessoas')"
+                 aria-label="Quero descartar — encontrar ponto de coleta">
+              <div class="hero-choice-pill hero-choice-pill--verde">B2C</div>
+              <div class="hero-choice-icon" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.6">
+                  <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                </svg>
               </div>
-              <div class="hero-stat-divider" aria-hidden="true"></div>
-              <div class="hero-stat">
-                <span class="hero-stat-num" data-count="87" data-suffix="%">0</span>
-                <span class="hero-stat-label">MELHORARAM O SCORE</span>
+              <h2 class="hero-choice-title hero-choice-title--dark">QUERO<br>DESCARTAR</h2>
+              <p class="hero-choice-desc hero-choice-desc--dark">Cartela de remédio, medicamento vencido, pilha, bateria ou frasco químico — descarte no ponto certo e ganhe EcoPontos.</p>
+              <ul class="hero-choice-lista hero-choice-lista--dark">
+                <li>Ponto de coleta homologado mais próximo</li>
+                <li>Certificado digital do descarte correto</li>
+                <li>EcoPontos trocáveis por benefícios</li>
+              </ul>
+              <div class="hero-choice-cta hero-choice-cta--dark">
+                REGISTRAR DESCARTE
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </div>
-              <div class="hero-stat-divider" aria-hidden="true"></div>
-              <div class="hero-stat">
-                <span class="hero-stat-num" data-count="100" data-suffix="%">0</span>
-                <span class="hero-stat-label">GRATUITO PARA INICIAR</span>
-              </div>
+            </div>
+
+          </div>
+
+          <!-- Stats unificados -->
+          <div class="hero-split-stats">
+            <div class="hero-stat">
+              <span class="hero-stat-num" data-count="2400" data-prefix="+">0</span>
+              <span class="hero-stat-label">EMPRESAS AVALIADAS</span>
+            </div>
+            <div class="hero-stat-divider" aria-hidden="true"></div>
+            <div class="hero-stat">
+              <span class="hero-stat-num" data-count="3800" data-prefix="+">0</span>
+              <span class="hero-stat-label">DESCARTES REGISTRADOS</span>
+            </div>
+            <div class="hero-stat-divider" aria-hidden="true"></div>
+            <div class="hero-stat">
+              <span class="hero-stat-num" data-count="92" data-suffix="%">0</span>
+              <span class="hero-stat-label">DESTINAÇÃO CORRETA</span>
+            </div>
+            <div class="hero-stat-divider" aria-hidden="true"></div>
+            <div class="hero-stat">
+              <span class="hero-stat-num" data-count="100" data-suffix="%">0</span>
+              <span class="hero-stat-label">GRATUITO PARA INICIAR</span>
             </div>
           </div>
 
-          <!-- MOCKUP DE UI — frame de app estilizado -->
-          <div class="hero-right" aria-hidden="true">
-            <div class="app-mockup">
-              <!-- barra de título da "janela" -->
-              <div class="app-mockup-bar">
-                <div class="app-mockup-dots">
-                  <span></span><span></span><span></span>
-                </div>
-                <div class="app-mockup-title">IMPACTO VERDE · DASHBOARD</div>
-              </div>
-
-              <!-- conteúdo interno do mockup -->
-              <div class="app-mockup-body">
-
-                <!-- linha superior: score grande + badge -->
-                <div class="mock-top-row">
-                  <div class="mock-score-block">
-                    <div class="mock-score-label">SCORE ESG</div>
-                    <div class="mock-score-num">78<span>/100</span></div>
-                    <div class="mock-score-badge">AVANÇADO · A+</div>
-                  </div>
-                  <div class="mock-ring" role="img" aria-label="Score 78 de 100">
-                    <svg width="80" height="80" viewBox="0 0 80 80">
-                      <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="7"/>
-                      <!-- arco preenchido: circunferência ≈ 201; 78% = 156.8 -->
-                      <circle cx="40" cy="40" r="32" fill="none" stroke="#AAFF00" stroke-width="7"
-                              stroke-linecap="round"
-                              stroke-dasharray="156.8 201"
-                              stroke-dashoffset="50"
-                              transform="rotate(-90 40 40)"/>
-                      <text x="40" y="45" text-anchor="middle" font-family="'Syne',sans-serif"
-                            font-weight="900" font-size="18" fill="#AAFF00">78</text>
-                    </svg>
-                  </div>
-                </div>
-
-                <!-- barras dos 3 pilares -->
-                <div class="mock-pillars">
-                  <div class="mock-pillar-row">
-                    <span class="mock-pillar-label">AMBIENTAL</span>
-                    <div class="mock-pillar-track">
-                      <div class="mock-pillar-fill" style="width:82%;background:#AAFF00"></div>
-                    </div>
-                    <span class="mock-pillar-val" style="color:#AAFF00">82</span>
-                  </div>
-                  <div class="mock-pillar-row">
-                    <span class="mock-pillar-label">SOCIAL</span>
-                    <div class="mock-pillar-track">
-                      <div class="mock-pillar-fill" style="width:71%;background:#0047FF"></div>
-                    </div>
-                    <span class="mock-pillar-val" style="color:#0047FF">71</span>
-                  </div>
-                  <div class="mock-pillar-row">
-                    <span class="mock-pillar-label">GOVERNANÇA</span>
-                    <div class="mock-pillar-track">
-                      <div class="mock-pillar-fill" style="width:88%;background:#7B00FF"></div>
-                    </div>
-                    <span class="mock-pillar-val" style="color:#7B00FF">88</span>
-                  </div>
-                </div>
-
-                <!-- linha de ação recomendada -->
-                <div class="mock-action-row">
-                  <div class="mock-action-icon">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                  </div>
-                  <div class="mock-action-text">
-                    <div class="mock-action-label">PRÓXIMA AÇÃO</div>
-                    <div class="mock-action-desc">Implementar gestão de resíduos sólidos</div>
-                  </div>
-                  <div class="mock-action-arrow">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -236,94 +225,177 @@
         </div>
       </div>
 
-      <!-- COMO FUNCIONA (preview na home) -->
+      <!-- COMO FUNCIONA (preview na home) — tabs B2B / B2C -->
       <div class="section-como-funciona" id="como-funciona-home">
         <div class="section-inner">
-          <div class="section-header-row reveal">
+
+          <!-- Cabeçalho + tabs -->
+          <div class="section-header-row reveal" style="flex-wrap:wrap;gap:1rem 2rem;align-items:flex-start">
             <h2 class="section-title-dark">COMO<br>FUNCIONA</h2>
-            <a href="#" class="btn btn-dark-outline" onclick="App.goTo('cadastro');return false;">
-              INICIAR AGORA
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-          <div class="steps-row stagger reveal">
-            <div class="step-card reveal">
-              <div class="step-number">01</div>
-              <div class="step-body">
-                <div class="step-icon-wrap">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true">
-                    <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
-                    <rect x="9" y="3" width="6" height="4" rx="1"/>
-                    <path d="M9 12h6M9 16h4"/>
-                  </svg>
-                </div>
-                <h3 class="step-title">DIAGNÓSTICO</h3>
-                <p class="step-desc">Responda perguntas objetivas sobre sua operação nos três pilares ESG. Leva menos de 10 minutos.</p>
-              </div>
-            </div>
-            <div class="step-connector" aria-hidden="true">
-              <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/></svg>
-            </div>
-            <div class="step-card reveal">
-              <div class="step-number">02</div>
-              <div class="step-body">
-                <div class="step-icon-wrap">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"/>
-                    <path d="M12 6v6l4 2"/>
-                  </svg>
-                </div>
-                <h3 class="step-title">SCORE &amp; ANÁLISE</h3>
-                <p class="step-desc">Receba seu Score ESG de 0 a 100 com análise detalhada por pilar e benchmarking do setor.</p>
-              </div>
-            </div>
-            <div class="step-connector" aria-hidden="true">
-              <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/></svg>
-            </div>
-            <div class="step-card reveal">
-              <div class="step-number">03</div>
-              <div class="step-body">
-                <div class="step-icon-wrap">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                    <path d="M22 4L12 14.01l-3-3"/>
-                  </svg>
-                </div>
-                <h3 class="step-title">PLANO DE AÇÃO</h3>
-                <p class="step-desc">Acesse recomendações priorizadas e acompanhe sua evolução mês a mês no dashboard integrado.</p>
+            <div style="display:flex;flex-direction:column;gap:1rem;flex:1;min-width:220px">
+              <div class="cf-tabs cf-tabs--dark" role="tablist" aria-label="Selecionar perfil — como funciona">
+                <button class="cf-tab cf-tab--dark cf-tab--dark-active" id="home-tab-b2b" role="tab"
+                        aria-selected="true" aria-controls="home-panel-b2b"
+                        onclick="CfTabs.showHome('b2b')">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  EMPRESAS
+                </button>
+                <button class="cf-tab cf-tab--dark" id="home-tab-b2c" role="tab"
+                        aria-selected="false" aria-controls="home-panel-b2c"
+                        onclick="CfTabs.showHome('b2c')">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+                  QUERO DESCARTAR
+                </button>
               </div>
             </div>
           </div>
+
+          <!-- Painel B2B -->
+          <div id="home-panel-b2b" role="tabpanel" aria-labelledby="home-tab-b2b">
+            <div class="steps-row stagger">
+              <div class="step-card">
+                <div class="step-number">01</div>
+                <div class="step-body">
+                  <div class="step-icon-wrap">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+                  </div>
+                  <h3 class="step-title">DIAGNÓSTICO</h3>
+                  <p class="step-desc">Responda perguntas objetivas sobre sua operação nos três pilares ESG. Leva menos de 10 minutos.</p>
+                </div>
+              </div>
+              <div class="step-connector" aria-hidden="true"><svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/></svg></div>
+              <div class="step-card">
+                <div class="step-number">02</div>
+                <div class="step-body">
+                  <div class="step-icon-wrap">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  </div>
+                  <h3 class="step-title">SCORE &amp; ANÁLISE</h3>
+                  <p class="step-desc">Receba seu Score ESG de 0 a 100 com análise detalhada por pilar e benchmarking do setor.</p>
+                </div>
+              </div>
+              <div class="step-connector" aria-hidden="true"><svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/></svg></div>
+              <div class="step-card">
+                <div class="step-number">03</div>
+                <div class="step-body">
+                  <div class="step-icon-wrap">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                  </div>
+                  <h3 class="step-title">PLANO DE AÇÃO</h3>
+                  <p class="step-desc">Acesse recomendações priorizadas e acompanhe sua evolução mês a mês no dashboard integrado.</p>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top:2rem">
+              <a href="#" class="btn btn-dark-outline" onclick="App.goTo('cadastro');return false;">
+                INICIAR AGORA
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Painel B2C -->
+          <div id="home-panel-b2c" role="tabpanel" aria-labelledby="home-tab-b2c" style="display:none">
+            <div class="steps-row stagger">
+              <div class="step-card">
+                <div class="step-number">01</div>
+                <div class="step-body">
+                  <div class="step-icon-wrap">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+                  </div>
+                  <h3 class="step-title">IDENTIFIQUE O RESÍDUO</h3>
+                  <p class="step-desc">Selecione o tipo: blister, medicamento vencido, pilha, bateria ou frasco químico. Um clique.</p>
+                </div>
+              </div>
+              <div class="step-connector" aria-hidden="true"><svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/></svg></div>
+              <div class="step-card">
+                <div class="step-number">02</div>
+                <div class="step-body">
+                  <div class="step-icon-wrap">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </div>
+                  <h3 class="step-title">ENCONTRE O PONTO</h3>
+                  <p class="step-desc">Informe seu CEP e receba o ponto de coleta homologado mais próximo — farmácia, ecoponto ou cooperativa.</p>
+                </div>
+              </div>
+              <div class="step-connector" aria-hidden="true"><svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/></svg></div>
+              <div class="step-card">
+                <div class="step-number">03</div>
+                <div class="step-body">
+                  <div class="step-icon-wrap">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                  </div>
+                  <h3 class="step-title">COMPROVE E PONTUE</h3>
+                  <p class="step-desc">Registre o descarte pelo app, receba o certificado digital rastreável e acumule EcoPontos automaticamente.</p>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top:2rem">
+              <a href="#" class="btn btn-dark-outline" onclick="App.goTo('pessoas');return false;">
+                REGISTRAR DESCARTE
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
 
       <!-- SEÇÃO PROBLEMA / PROPOSTA DE VALOR -->
       <div class="section-dark">
         <div class="section-inner">
-          <div class="two-col-section">
-            <div class="two-col-left reveal-left">
+          <div class="problema-dual">
+            <div class="problema-intro reveal">
               <div class="tag-label">O PROBLEMA</div>
-              <h2 class="section-title-white">85% DAS PMEs NÃO<br>SABEM COMO MEDIR<br><span class="text-accent">SEU ESG.</span></h2>
+              <h2 class="section-title-white" style="margin-top:1rem">RESÍDUO SEM RASTRO<br>É <span class="text-accent">RISCO REAL.</span></h2>
+              <p class="body-text-muted" style="margin-top:1rem;max-width:500px">Blisters de remédio, pilhas e embalagens químicas contaminam solo e lençóis freáticos. Empresas sem MTR perdem licitações. Famílias descartam errado por falta de informação. A IVESG resolve os dois lados.</p>
             </div>
-            <div class="two-col-right reveal-right">
-              <p class="body-text-muted">Enquanto grandes corporações investem em equipes dedicadas de sustentabilidade, pequenas e médias empresas ficam para trás — perdendo acesso a crédito, licitações e investidores que já exigem critérios ESG.</p>
-              <div class="value-list">
-                <div class="value-item">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-                  <span>Sem necessidade de consultores externos caros</span>
+            <div class="problema-cards stagger">
+              <!-- Card B2B -->
+              <div class="problema-card reveal">
+                <div class="problema-card-tag">PARA EMPRESAS</div>
+                <div class="problema-stat"><span class="problema-stat-num">78%</span><span class="problema-stat-label">das PMEs não têm MTR digital para resíduos perigosos</span></div>
+                <div class="value-list" style="margin-top:1.5rem">
+                  <div class="value-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                    <span>Diagnóstico ESG em menos de 10 minutos</span>
+                  </div>
+                  <div class="value-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                    <span>MTR auditável para bancos e licitações</span>
+                  </div>
+                  <div class="value-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                    <span>Score ESG por pillar E / S / G</span>
+                  </div>
                 </div>
-                <div class="value-item">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-                  <span>Diagnóstico completo em menos de 10 minutos</span>
+                <button class="btn btn-primary btn-sm" style="margin-top:1.5rem" onclick="App.goTo('diagnostico');return false;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  Fazer diagnóstico grátis
+                </button>
+              </div>
+              <!-- Card B2C -->
+              <div class="problema-card problema-card--green reveal">
+                <div class="problema-card-tag problema-card-tag--green">QUERO DESCARTAR</div>
+                <div class="problema-stat"><span class="problema-stat-num">1 em 3</span><span class="problema-stat-label">blisters de remédio vai para o lixo comum no Brasil</span></div>
+                <div class="value-list" style="margin-top:1.5rem">
+                  <div class="value-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                    <span>Encontre o ponto de coleta mais próximo</span>
+                  </div>
+                  <div class="value-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                    <span>Certificado digital de destinação rastreável</span>
+                  </div>
+                  <div class="value-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                    <span>EcoPontos trocáveis por benefícios reais</span>
+                  </div>
                 </div>
-                <div class="value-item">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-                  <span>Relatórios prontos para bancos, investidores e licitações</span>
-                </div>
-                <div class="value-item">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-                  <span>Rastreabilidade de resíduos com MTR digital auditável</span>
-                </div>
+                <button class="btn btn-primary btn-sm" style="margin-top:1.5rem;background:#AAFF00;color:#000;border-color:#AAFF00" onclick="App.goTo('pessoas');return false;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  Registrar meu descarte
+                </button>
               </div>
             </div>
           </div>
@@ -428,6 +500,85 @@
         </div>
       </div>
 
+      <!-- SEÇÃO: DOIS CAMINHOS — B2B vs B2C -->
+      <div class="section-dark section-dois-caminhos">
+        <div class="section-inner">
+
+          <div style="text-align:center;margin-bottom:3.5rem">
+            <div class="hero-badge reveal" style="margin:0 auto 1rem">
+              <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88H3.88Z" fill="#000"/></svg>
+              UMA PLATAFORMA, DOIS PROPÓSITOS
+            </div>
+            <h2 class="section-title-white reveal">PARA QUEM É O<br><span class="text-accent">IMPACTO VERDE?</span></h2>
+            <p class="body-text-muted reveal" style="max-width:560px;margin:1rem auto 0">O mesmo compromisso com o descarte responsável — em duas soluções pensadas para contextos diferentes.</p>
+          </div>
+
+          <div class="dois-caminhos-grid stagger">
+
+            <!-- Card B2B -->
+            <div class="caminho-card reveal">
+              <div class="caminho-tag">B2B</div>
+              <div class="caminho-icon" aria-hidden="true">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="1.8">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              </div>
+              <h3 class="caminho-titulo">PARA EMPRESAS E PMEs</h3>
+              <p class="caminho-desc">Diagnóstico ESG completo, score por pilar (Ambiental, Social, Governança), rastreabilidade de resíduos com MTR digital e relatórios prontos para bancos, licitações e investidores.</p>
+              <ul class="caminho-lista">
+                <li>Score ESG de 0 a 100 em menos de 10 min</li>
+                <li>Dashboard com KPIs e plano de ação</li>
+                <li>Relatório PDF auditável (GRI / PNRS)</li>
+                <li>Gestão de resíduos industriais e farmacêuticos</li>
+              </ul>
+              <div class="caminho-cta-group">
+                <a href="#" class="btn btn-primary" onclick="App.goTo('cadastro');return false;">
+                  CRIAR CONTA GRÁTIS
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#" class="btn btn-secondary-outline btn-sm" onclick="App.goTo('planos');return false;">Ver planos</a>
+              </div>
+            </div>
+
+            <!-- Divisor central -->
+            <div class="caminho-divisor" aria-hidden="true">
+              <div class="caminho-divisor-line"></div>
+              <div class="caminho-divisor-ou">OU</div>
+              <div class="caminho-divisor-line"></div>
+            </div>
+
+            <!-- Card B2C -->
+            <div class="caminho-card caminho-card--verde reveal">
+              <div class="caminho-tag caminho-tag--verde">B2C</div>
+              <div class="caminho-icon" aria-hidden="true">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="1.8">
+                  <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                </svg>
+              </div>
+              <h3 class="caminho-titulo">QUERO DESCARTAR</h3>
+              <p class="caminho-desc">Cartela de remédio, embalagem de medicamento, pilha, bateria ou frasco de produto químico — você sabe onde descartar? A gente conecta você ao ponto certo e comprova o destino.</p>
+              <ul class="caminho-lista">
+                <li>Encontre o ponto de coleta mais próximo</li>
+                <li>Certificado digital do descarte correto</li>
+                <li>Rastreabilidade do resíduo até o destino final</li>
+                <li>EcoPontos trocáveis por benefícios locais</li>
+              </ul>
+              <div class="caminho-cta-group">
+                <a href="#" class="btn btn-primary" onclick="App.goTo('pessoas');return false;">
+                  REGISTRAR DESCARTE
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#" class="btn btn-secondary-outline btn-sm" onclick="App.goTo('pessoas');return false;">Saiba mais</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
       <!-- CTA FINAL HOME -->
       <div class="section-cta-final">
         <div class="section-inner" style="text-align:center">
@@ -436,12 +587,13 @@
           </div>
           <h2 class="cta-title">PRONTO PARA MEDIR<br>SEU IMPACTO?</h2>
           <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-            <a href="#" class="btn btn-primary btn-lg" onclick="App.goTo('cadastro');return false;" aria-label="Criar conta gratuita">
-              CRIAR CONTA GRÁTIS
+            <a href="#" class="btn btn-primary btn-lg" onclick="App.goTo('cadastro');return false;" aria-label="Criar conta gratuita — Empresas">
+              PARA EMPRESAS
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <a href="#" class="btn btn-dark-outline btn-lg" onclick="App.goTo('login');return false;">
-              JÁ TENHO CONTA
+            <a href="#" class="btn btn-dark-outline btn-lg" onclick="App.goTo('pessoas');return false;" aria-label="Quero descartar — agendar coleta">
+              QUERO DESCARTAR
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
         </div>
@@ -466,6 +618,7 @@
               <a href="#" class="footer-link" onclick="App.goTo('planos');return false;">Planos e preços</a>
               <a href="#" class="footer-link" onclick="App.goTo('diagnostico');return false;">Diagnóstico ESG</a>
               <a href="#" class="footer-link" onclick="App.goTo('dashboard');return false;">Dashboard</a>
+              <a href="#" class="footer-link nav-link-pessoas" onclick="App.goTo('pessoas');return false;">Quero Descartar</a>
             </div>
             <div class="footer-col">
               <div class="footer-col-title">EMPRESA</div>
@@ -667,60 +820,172 @@
 
     <!-- ── PAGE: COMO FUNCIONA (dedicada) ── -->
     <section data-page="como-funciona" class="page" aria-label="Como funciona">
+
+      <!-- Cabeçalho -->
       <div class="inner-page-header">
         <div class="section-inner">
           <h1 class="inner-page-title">COMO FUNCIONA</h1>
-          <p class="inner-page-sub">Três passos simples para transformar ESG em vantagem competitiva real.</p>
+          <p class="inner-page-sub">Uma plataforma, dois caminhos. Cada um funciona do jeito certo para quem você é.</p>
+
+          <!-- Tabs de alternância -->
+          <div class="cf-tabs" role="tablist" aria-label="Selecionar perfil">
+            <button class="cf-tab cf-tab--active" id="cf-tab-b2b" role="tab"
+                    aria-selected="true" aria-controls="cf-panel-b2b"
+                    onclick="CfTabs.show('b2b')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              SOU UMA EMPRESA
+            </button>
+            <button class="cf-tab" id="cf-tab-b2c" role="tab"
+                    aria-selected="false" aria-controls="cf-panel-b2c"
+                    onclick="CfTabs.show('b2c')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+              QUERO DESCARTAR
+            </button>
+          </div>
         </div>
       </div>
-      <div class="section-como-funciona section-no-top">
+
+      <!-- PAINEL B2B -->
+      <div id="cf-panel-b2b" class="cf-panel" role="tabpanel" aria-labelledby="cf-tab-b2b">
+        <div class="section-como-funciona section-no-top">
+          <div class="section-inner">
+            <div class="cf-panel-label">PARA EMPRESAS E PMEs</div>
+            <div class="steps-row">
+              <div class="step-card">
+                <div class="step-number">01</div>
+                <div class="step-body">
+                  <div class="step-icon-wrap">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+                  </div>
+                  <h3 class="step-title">DIAGNÓSTICO</h3>
+                  <p class="step-desc">Responda perguntas objetivas sobre sua operação nos três pilares ESG. Leva menos de 10 minutos.</p>
+                </div>
+              </div>
+              <div class="step-connector" aria-hidden="true">
+                <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/></svg>
+              </div>
+              <div class="step-card">
+                <div class="step-number">02</div>
+                <div class="step-body">
+                  <div class="step-icon-wrap">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  </div>
+                  <h3 class="step-title">SCORE &amp; ANÁLISE</h3>
+                  <p class="step-desc">Receba seu Score ESG de 0 a 100 com análise detalhada por pilar e benchmarking do setor.</p>
+                </div>
+              </div>
+              <div class="step-connector" aria-hidden="true">
+                <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/></svg>
+              </div>
+              <div class="step-card">
+                <div class="step-number">03</div>
+                <div class="step-body">
+                  <div class="step-icon-wrap">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                  </div>
+                  <h3 class="step-title">PLANO DE AÇÃO</h3>
+                  <p class="step-desc">Acesse recomendações priorizadas e acompanhe sua evolução mês a mês no dashboard integrado.</p>
+                </div>
+              </div>
+            </div>
+            <div style="text-align:center;margin-top:3rem">
+              <a href="#" class="btn btn-primary btn-lg" onclick="App.goTo('cadastro');return false;">
+                COMEÇAR GRÁTIS
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAINEL B2C -->
+      <div id="cf-panel-b2c" class="cf-panel" role="tabpanel" aria-labelledby="cf-tab-b2c" style="display:none">
+        <div class="section-como-funciona section-no-top">
+          <div class="section-inner">
+            <div class="cf-panel-label cf-panel-label--verde">PARA QUEM QUER DESCARTAR</div>
+            <div class="steps-row">
+              <div class="step-card">
+                <div class="step-number">01</div>
+                <div class="step-body">
+                  <div class="step-icon-wrap">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+                  </div>
+                  <h3 class="step-title">IDENTIFIQUE O RESÍDUO</h3>
+                  <p class="step-desc">Selecione o tipo: blister de remédio, medicamento vencido, pilha, bateria ou frasco químico. Um clique.</p>
+                </div>
+              </div>
+              <div class="step-connector" aria-hidden="true">
+                <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/></svg>
+              </div>
+              <div class="step-card">
+                <div class="step-number">02</div>
+                <div class="step-body">
+                  <div class="step-icon-wrap">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </div>
+                  <h3 class="step-title">ENCONTRE O PONTO</h3>
+                  <p class="step-desc">Informe seu CEP e receba o ponto de coleta homologado mais próximo — farmácia, ecoponto ou cooperativa credenciada.</p>
+                </div>
+              </div>
+              <div class="step-connector" aria-hidden="true">
+                <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/></svg>
+              </div>
+              <div class="step-card">
+                <div class="step-number">03</div>
+                <div class="step-body">
+                  <div class="step-icon-wrap">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                  </div>
+                  <h3 class="step-title">COMPROVE E PONTUE</h3>
+                  <p class="step-desc">Registre o descarte, receba o certificado digital rastreável e acumule EcoPontos automaticamente.</p>
+                </div>
+              </div>
+            </div>
+            <div style="text-align:center;margin-top:3rem">
+              <a href="#" class="btn btn-primary btn-lg" onclick="App.goTo('pessoas');return false;">
+                REGISTRAR DESCARTE
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOCO DE CONEXÃO — o que une os dois -->
+      <div class="section-dark cf-conexao">
         <div class="section-inner">
-          <div class="steps-row">
-            <div class="step-card">
-              <div class="step-number">01</div>
-              <div class="step-body">
-                <div class="step-icon-wrap">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
-                </div>
-                <h3 class="step-title">DIAGNÓSTICO</h3>
-                <p class="step-desc">Responda perguntas objetivas sobre sua operação nos três pilares ESG. Leva menos de 10 minutos.</p>
-              </div>
+          <div style="text-align:center;margin-bottom:2.5rem">
+            <h2 class="section-title-white reveal">O DESCARTE DE UM<br><span class="text-accent">ALIMENTA O OUTRO.</span></h2>
+            <p class="body-text-muted reveal" style="max-width:580px;margin:1rem auto 0">Cada descarte registrado num ponto homologado gera dados e volume que fortalecem o score ESG das empresas parceiras da região — formando um ciclo completo de impacto.</p>
+          </div>
+          <div class="cf-conexao-grid stagger">
+            <div class="cf-conexao-item reveal">
+              <div class="cf-conexao-num">1</div>
+              <p class="cf-conexao-txt">Pessoa descarta blister ou medicamento vencido no ponto de coleta homologado</p>
             </div>
-            <div class="step-connector" aria-hidden="true">
-              <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/></svg>
+            <div class="cf-conexao-seta" aria-hidden="true">→</div>
+            <div class="cf-conexao-item reveal">
+              <div class="cf-conexao-num">2</div>
+              <p class="cf-conexao-txt">Plataforma registra o resíduo com MTR digital — peso, tipo e destino</p>
             </div>
-            <div class="step-card">
-              <div class="step-number">02</div>
-              <div class="step-body">
-                <div class="step-icon-wrap">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                </div>
-                <h3 class="step-title">SCORE &amp; ANÁLISE</h3>
-                <p class="step-desc">Receba seu Score ESG de 0 a 100 com análise detalhada por pilar e benchmarking do setor.</p>
-              </div>
+            <div class="cf-conexao-seta" aria-hidden="true">→</div>
+            <div class="cf-conexao-item reveal">
+              <div class="cf-conexao-num">3</div>
+              <p class="cf-conexao-txt">Cooperativa credenciada recebe, processa e confirma o ciclo fechado</p>
             </div>
-            <div class="step-connector" aria-hidden="true">
-              <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/></svg>
-            </div>
-            <div class="step-card">
-              <div class="step-number">03</div>
-              <div class="step-body">
-                <div class="step-icon-wrap">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-                </div>
-                <h3 class="step-title">PLANO DE AÇÃO</h3>
-                <p class="step-desc">Acesse recomendações priorizadas e acompanhe sua evolução mês a mês no dashboard integrado.</p>
-              </div>
+            <div class="cf-conexao-seta" aria-hidden="true">→</div>
+            <div class="cf-conexao-item reveal">
+              <div class="cf-conexao-num">4</div>
+              <p class="cf-conexao-txt">Farmácia ou indústria parceira comprova destinação correta e eleva o score ESG</p>
             </div>
           </div>
-          <div style="text-align:center;margin-top:3rem">
-            <a href="#" class="btn btn-primary btn-lg" onclick="App.goTo('cadastro');return false;">
-              COMEÇAR AGORA
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
+          <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:3rem">
+            <a href="#" class="btn btn-primary" onclick="App.goTo('cadastro');return false;">Sou uma empresa</a>
+            <a href="#" class="btn btn-secondary-outline" onclick="App.goTo('pessoas');return false;">Quero descartar</a>
           </div>
         </div>
       </div>
+
     </section>
 
     <!-- ── PAGE: PLANOS ── -->
@@ -924,6 +1189,520 @@
       </div>
     </section>
 
+    <!-- ── PAGE: PESSOAS / QUERO DESCARTAR ── -->
+    <section data-page="pessoas" class="page" aria-label="Quero descartar — descarte de resíduos perigosos">
+
+      <!-- HERO B2C -->
+      <div class="hero pessoas-hero">
+        <canvas id="pessoas-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+        <svg class="hero-dots" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <defs>
+            <pattern id="dot-grid-p" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="1.5" fill="#AAFF00" opacity="0.08"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#dot-grid-p)"/>
+        </svg>
+
+        <div class="hero-inner">
+          <div class="hero-left">
+            <div class="hero-badge" role="note">
+              <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
+                <path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88H3.88Z" fill="#000"/>
+              </svg>
+              DESCARTE RESPONSÁVEL · 100% GRATUITO
+            </div>
+
+            <h1 class="hero-title">
+              <span class="hero-title-white">DESCARTE NO</span>
+              <span class="hero-title-accent">LUGAR CERTO.</span>
+            </h1>
+
+            <p class="hero-subtitle">
+              Cartela de remédio, embalagem de medicamento, pilha ou bateria — resíduos perigosos que não podem ir para o lixo comum. Encontre o ponto de coleta mais próximo, comprove o descarte correto e ainda ganhe EcoPontos.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#pessoas-form" class="btn btn-primary btn-lg" aria-label="Registrar descarte">
+                REGISTRAR DESCARTE
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#pessoas-como-funciona" class="btn btn-secondary-outline">
+                VER COMO FUNCIONA
+              </a>
+            </div>
+
+            <div class="hero-stats">
+              <div class="hero-stat">
+                <span class="hero-stat-num" data-count="3800" data-prefix="+">0</span>
+                <span class="hero-stat-label">DESCARTES REGISTRADOS</span>
+              </div>
+              <div class="hero-stat-divider" aria-hidden="true"></div>
+              <div class="hero-stat">
+                <span class="hero-stat-num" data-count="92" data-suffix="%">0</span>
+                <span class="hero-stat-label">DESTINAÇÃO CORRETA</span>
+              </div>
+              <div class="hero-stat-divider" aria-hidden="true"></div>
+              <div class="hero-stat">
+                <span class="hero-stat-num" data-count="100" data-suffix="%">0</span>
+                <span class="hero-stat-label">GRATUITO</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mockup B2C: app de agendamento -->
+          <div class="hero-right" aria-hidden="true">
+            <div class="app-mockup">
+              <div class="app-mockup-bar">
+                <div class="app-mockup-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="app-mockup-title">IVESG · DESCARTE CONSCIENTE</div>
+              </div>
+              <div class="app-mockup-body">
+                <!-- Linha de status da coleta -->
+                <div class="mock-coleta-status">
+                  <div class="mock-coleta-badge">DESCARTE REGISTRADO</div>
+                  <div class="mock-coleta-id">#IVG-2025-03847</div>
+                </div>
+                <!-- Item coletado -->
+                <div class="mock-action-row" style="margin-top:.4rem">
+                  <div class="mock-action-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+                  </div>
+                  <div class="mock-action-text">
+                    <div class="mock-action-label">MEDICAMENTO</div>
+                    <div class="mock-action-desc">Blisters e cartelas · Farmácia Parceira SP</div>
+                  </div>
+                  <div class="mock-action-arrow">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </div>
+                </div>
+                <!-- Linha de EcoPontos -->
+                <div class="mock-ecopontos-row">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <span class="mock-ecopontos-label">ECOPONTOS GANHOS</span>
+                  <span class="mock-ecopontos-val">+120 pts</span>
+                </div>
+                <!-- Mini barras de progresso de nível -->
+                <div class="mock-pillars">
+                  <div class="mock-pillar-row">
+                    <span class="mock-pillar-label">NÍVEL</span>
+                    <div class="mock-pillar-track">
+                      <div class="mock-pillar-fill" style="width:60%;background:#AAFF00"></div>
+                    </div>
+                    <span class="mock-pillar-val" style="color:#AAFF00">🌳</span>
+                  </div>
+                  <div class="mock-pillar-row">
+                    <span class="mock-pillar-label">CO₂ EVITADO</span>
+                    <div class="mock-pillar-track">
+                      <div class="mock-pillar-fill" style="width:44%;background:#0047FF"></div>
+                    </div>
+                    <span class="mock-pillar-val" style="color:#0047FF">8kg</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAIXA DE RESÍDUOS ACEITOS -->
+      <div class="partners-strip" aria-label="Tipos de resíduo aceitos">
+        <div class="partners-inner">
+          <span class="partners-label">ACEITAMOS</span>
+          <div class="partners-track" aria-hidden="true">
+            <div class="partners-list" role="list">
+              <span role="listitem">BLISTERS E CARTELAS</span>
+              <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#000"/></svg>
+              <span role="listitem">MEDICAMENTOS VENCIDOS</span>
+              <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#000"/></svg>
+              <span role="listitem">PILHAS E BATERIAS</span>
+              <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#000"/></svg>
+              <span role="listitem">FRASCOS QUÍMICOS</span>
+              <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#000"/></svg>
+              <span role="listitem">EMBALAGENS DE REMÉDIO</span>
+              <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#000"/></svg>
+              <span role="listitem">ÓLEO LUBRIFICANTE</span>
+              <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#000"/></svg>
+            </div>
+            <div class="partners-list" aria-hidden="true">
+              <span>BLISTERS E CARTELAS</span>
+              <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#000"/></svg>
+              <span>MEDICAMENTOS VENCIDOS</span>
+              <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#000"/></svg>
+              <span>PILHAS E BATERIAS</span>
+              <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#000"/></svg>
+              <span>FRASCOS QUÍMICOS</span>
+              <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#000"/></svg>
+              <span>EMBALAGENS DE REMÉDIO</span>
+              <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#000"/></svg>
+              <span>ÓLEO LUBRIFICANTE</span>
+              <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88Z" fill="#000"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMO FUNCIONA B2C -->
+      <div class="section-como-funciona" id="pessoas-como-funciona">
+        <div class="section-inner">
+          <div class="section-header-row reveal">
+            <h2 class="section-title-dark">3 PASSOS<br>SIMPLES</h2>
+            <a href="#pessoas-form" class="btn btn-dark-outline">
+              REGISTRAR DESCARTE
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+          <div class="steps-row stagger reveal">
+            <div class="step-card reveal">
+              <div class="step-number">01</div>
+              <div class="step-body">
+                <div class="step-icon-wrap">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/>
+                  </svg>
+                </div>
+                <h3 class="step-title">IDENTIFIQUE O RESÍDUO</h3>
+                <p class="step-desc">Selecione o tipo: blister de remédio, medicamento vencido, pilha, bateria ou frasco químico. Um clique.</p>
+              </div>
+            </div>
+            <div class="step-connector" aria-hidden="true">
+              <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/></svg>
+            </div>
+            <div class="step-card reveal">
+              <div class="step-number">02</div>
+              <div class="step-body">
+                <div class="step-icon-wrap">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true">
+                    <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/>
+                  </svg>
+                </div>
+                <h3 class="step-title">ENCONTRE O PONTO</h3>
+                <p class="step-desc">Veja o ponto de coleta homologado mais próximo de você — farmácia parceira, ecoponto ou cooperativa credenciada.</p>
+              </div>
+            </div>
+            <div class="step-connector" aria-hidden="true">
+              <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/></svg>
+            </div>
+            <div class="step-card reveal">
+              <div class="step-number">03</div>
+              <div class="step-body">
+                <div class="step-icon-wrap">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2" aria-hidden="true">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                </div>
+                <h3 class="step-title">COMPROVE E PONTUE</h3>
+                <p class="step-desc">Registre o descarte pelo app, receba o certificado digital rastreável e acumule EcoPontos automaticamente.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- O QUE COLETAMOS -->
+      <div class="section-dark">
+        <div class="section-inner">
+          <div style="text-align:center;margin-bottom:3rem">
+            <h2 class="section-title-white reveal">O QUE VOCÊ PODE <span class="text-accent">DESCARTAR</span></h2>
+            <p class="body-text-muted reveal" style="max-width:520px;margin:1rem auto 0">Resíduos perigosos que contaminam solo e lençóis freáticos quando vão para o lixo comum. Descarte no lugar certo — é gratuito.</p>
+          </div>
+          <div class="residuos-grid stagger">
+            <div class="residuo-card reveal">
+              <div class="residuo-icon" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4V2M16 4V2M8 14h2M12 14h2"/></svg>
+              </div>
+              <div class="residuo-name">BLISTERS E CARTELAS</div>
+              <div class="residuo-examples">Embalagens de remédio (plástico + alumínio multicamada)</div>
+              <div class="residuo-pts">+60 pts/lote</div>
+            </div>
+            <div class="residuo-card reveal">
+              <div class="residuo-icon" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="1.8"><path d="M10.5 3h3M12 3v4M8 7h8l-1 13H9L8 7z"/><path d="M9 11h6M9 15h4"/></svg>
+              </div>
+              <div class="residuo-name">MEDICAMENTOS VENCIDOS</div>
+              <div class="residuo-examples">Comprimidos, líquidos, pomadas fora do prazo</div>
+              <div class="residuo-pts">+80 pts/lote</div>
+            </div>
+            <div class="residuo-card reveal">
+              <div class="residuo-icon" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="1.8"><rect x="6" y="3" width="12" height="18" rx="2"/><line x1="10" y1="7" x2="14" y2="7"/><line x1="10" y1="11" x2="14" y2="11"/></svg>
+              </div>
+              <div class="residuo-name">PILHAS E BATERIAS</div>
+              <div class="residuo-examples">Pilhas AA/AAA, baterias de celular, nobreak</div>
+              <div class="residuo-pts">+50 pts/unid.</div>
+            </div>
+            <div class="residuo-card reveal">
+              <div class="residuo-icon" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="1.8"><path d="M9 3h6l1 5H8L9 3z"/><path d="M8 8v12a1 1 0 001 1h6a1 1 0 001-1V8"/><line x1="10" y1="12" x2="10" y2="16"/><line x1="14" y1="12" x2="14" y2="16"/></svg>
+              </div>
+              <div class="residuo-name">FRASCOS QUÍMICOS</div>
+              <div class="residuo-examples">Tinta, solvente, inseticida, produto de limpeza</div>
+              <div class="residuo-pts">+70 pts/unid.</div>
+            </div>
+            <div class="residuo-card reveal">
+              <div class="residuo-icon" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="1.8"><ellipse cx="12" cy="5" rx="4" ry="2"/><path d="M8 5v14c0 1.1 1.8 2 4 2s4-.9 4-2V5"/><path d="M8 12c0 1.1 1.8 2 4 2s4-.9 4-2"/></svg>
+              </div>
+              <div class="residuo-name">ÓLEO LUBRIFICANTE</div>
+              <div class="residuo-examples">Óleo de motor, fluido de freio, óleo hidráulico</div>
+              <div class="residuo-pts">+40 pts/litro</div>
+            </div>
+            <div class="residuo-card reveal">
+              <div class="residuo-icon" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="1.8"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+              </div>
+              <div class="residuo-name">EMBALAGENS CONTAMINADAS</div>
+              <div class="residuo-examples">Frascos e caixas com resíduos de produtos perigosos</div>
+              <div class="residuo-pts">+30 pts/kg</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIFERENCIAIS: RASTREAMENTO + CERTIFICADO -->
+      <div class="section-como-funciona" style="padding:5rem 0">
+        <div class="section-inner">
+          <div class="two-col-section">
+            <div class="two-col-left reveal-left">
+              <div class="tag-label" style="background:#000;color:#AAFF00;border-color:#000">TRANSPARÊNCIA TOTAL</div>
+              <h2 class="section-title-dark" style="margin-top:1rem">RASTREIE.<br>COMPROVE.<br>CONFIE.</h2>
+            </div>
+            <div class="two-col-right reveal-right">
+              <p class="body-text-muted" style="color:#000;margin-bottom:1.5rem">Cada descarte gera um registro auditável. Você sabe para onde foi o resíduo — e a cadeia toda fica rastreável.</p>
+              <div class="value-list">
+                <div class="value-item" style="color:#000">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                  <span>Certificado Digital de Destinação (PDF + QR Code auditável)</span>
+                </div>
+                <div class="value-item" style="color:#000">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                  <span>Pontos de coleta homologados — farmácias, ecopontos e cooperativas</span>
+                </div>
+                <div class="value-item" style="color:#000">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                  <span>Rastreabilidade do resíduo até o reciclador final (PNRS)</span>
+                </div>
+                <div class="value-item" style="color:#000">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                  <span>Dados do seu descarte alimentam o score ESG da empresa parceira</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CLUBE ECOPONTOS -->
+      <div class="section-dark">
+        <div class="section-inner">
+          <div style="text-align:center;margin-bottom:3rem">
+            <div class="beta-badge reveal" style="display:inline-flex">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              CLUBE ECOPONTOS
+            </div>
+            <h2 class="section-title-white reveal" style="margin-top:1rem">DESCARTE CORRETO<br><span class="text-accent">VALE PRÊMIOS.</span></h2>
+            <p class="body-text-muted reveal" style="max-width:500px;margin:1rem auto 0">Cada descarte correto gera EcoPontos. Acumule e troque por benefícios reais.</p>
+          </div>
+          <div class="ecopontos-niveis stagger">
+            <div class="ecoponto-card reveal">
+              <div class="ecoponto-emoji" aria-hidden="true">🌱</div>
+              <div class="ecoponto-nivel">NÍVEL MUDA</div>
+              <div class="ecoponto-range">0 – 499 pts</div>
+              <ul class="ecoponto-lista">
+                <li>Certificado digital de descarte</li>
+                <li>Mapa de pontos de coleta</li>
+                <li>Histórico de descartes</li>
+              </ul>
+            </div>
+            <div class="ecoponto-card ecoponto-card--destaque reveal">
+              <div class="ecoponto-emoji" aria-hidden="true">🌳</div>
+              <div class="ecoponto-nivel">NÍVEL ÁRVORE</div>
+              <div class="ecoponto-range">500 – 1999 pts</div>
+              <ul class="ecoponto-lista">
+                <li>5% desconto em farmácias parceiras</li>
+                <li>Alertas de recall de medicamentos</li>
+                <li>Badge verificado no perfil</li>
+              </ul>
+            </div>
+            <div class="ecoponto-card reveal">
+              <div class="ecoponto-emoji" aria-hidden="true">🌲</div>
+              <div class="ecoponto-nivel">NÍVEL FLORESTA</div>
+              <div class="ecoponto-range">2000+ pts</div>
+              <ul class="ecoponto-lista">
+                <li>10% desconto em produtos e serviços</li>
+                <li>Nome no relatório ESG das empresas parceiras</li>
+                <li>Plantio de árvore real via ONG parceira</li>
+              </ul>
+            </div>
+          </div>
+          <p class="ecopontos-nota reveal">100 pontos = R$ 5 em crédito em parceiros locais · Bônus de indicação: +50 pts</p>
+        </div>
+      </div>
+
+      <!-- FORMULÁRIO DE VALIDAÇÃO -->
+      <div class="section-cta-final" id="pessoas-form" style="padding:5rem 0">
+        <div class="section-inner" style="max-width:680px">
+          <div style="text-align:center;margin-bottom:2.5rem">
+            <div class="cta-star" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 10 10"><path d="M5 0L6.12 3.88H10L6.94 6.29L8.09 10L5 7.64L1.91 10L3.06 6.29L0 3.88H3.88Z" fill="#000"/></svg>
+            </div>
+            <h2 class="cta-title">REGISTRE SEU<br>DESCARTE AGORA</h2>
+            <p style="color:rgba(255,255,255,.55);font-size:1rem;margin-top:.8rem">Preencha o formulário — indicamos o ponto de coleta mais próximo e enviamos seu certificado digital.</p>
+          </div>
+
+          <!-- Formulário -->
+          <form class="pessoas-form" id="form-coleta" onsubmit="PessoasForm.submit(event)" novalidate>
+
+            <!-- Tipo de resíduo — seleção visual -->
+            <div class="form-group">
+              <label class="form-label">TIPO DE RESÍDUO <span class="form-required">*</span></label>
+              <div class="residuo-select-grid" role="group" aria-label="Selecione o tipo de resíduo">
+                <button type="button" class="residuo-btn" data-value="blisters" onclick="PessoasForm.selectResiduo(this)" aria-pressed="false">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4V2M16 4V2"/></svg>
+                  Blisters
+                </button>
+                <button type="button" class="residuo-btn" data-value="medicamentos" onclick="PessoasForm.selectResiduo(this)" aria-pressed="false">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M10.5 3h3M12 3v4M8 7h8l-1 13H9L8 7z"/></svg>
+                  Medicamentos
+                </button>
+                <button type="button" class="residuo-btn" data-value="pilhas" onclick="PessoasForm.selectResiduo(this)" aria-pressed="false">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"/><line x1="10" y1="7" x2="14" y2="7"/></svg>
+                  Pilhas e Baterias
+                </button>
+                <button type="button" class="residuo-btn" data-value="frascos" onclick="PessoasForm.selectResiduo(this)" aria-pressed="false">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 3h6l1 5H8L9 3z"/><path d="M8 8v12a1 1 0 001 1h6a1 1 0 001-1V8"/></svg>
+                  Frascos Químicos
+                </button>
+                <button type="button" class="residuo-btn" data-value="oleo" onclick="PessoasForm.selectResiduo(this)" aria-pressed="false">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><ellipse cx="12" cy="5" rx="4" ry="2"/><path d="M8 5v14c0 1.1 1.8 2 4 2s4-.9 4-2V5"/></svg>
+                  Óleo Lubrificante
+                </button>
+                <button type="button" class="residuo-btn" data-value="embalagens" onclick="PessoasForm.selectResiduo(this)" aria-pressed="false">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+                  Embalagens
+                </button>
+              </div>
+              <input type="hidden" id="coleta-residuo" name="residuo" required />
+              <div class="form-error" id="err-residuo" role="alert" aria-live="polite"></div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label" for="coleta-nome">NOME COMPLETO <span class="form-required">*</span></label>
+                <input type="text" id="coleta-nome" class="form-input" placeholder="Seu nome" autocomplete="name" required minlength="3" />
+                <div class="form-error" id="err-nome" role="alert" aria-live="polite"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="coleta-tel">WHATSAPP <span class="form-required">*</span></label>
+                <input type="tel" id="coleta-tel" class="form-input" placeholder="(11) 99999-9999" autocomplete="tel" required />
+                <div class="form-error" id="err-tel" role="alert" aria-live="polite"></div>
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label" for="coleta-cep">SEU CEP <span class="form-required">*</span></label>
+                <input type="text" id="coleta-cep" class="form-input" placeholder="00000-000" autocomplete="postal-code" required maxlength="9" oninput="PessoasForm.maskCep(this)" onblur="PessoasForm.checkCep(this)" />
+                <div class="form-error" id="err-cep" role="alert" aria-live="polite"></div>
+                <div class="form-hint" id="hint-cep"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="coleta-email">E-MAIL <span style="font-weight:400;opacity:.55">(opcional)</span></label>
+                <input type="email" id="coleta-email" class="form-input" placeholder="Para receber o certificado digital" autocomplete="email" />
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-top:.5rem">
+              <label class="form-check-label" for="coleta-lgpd">
+                <input type="checkbox" id="coleta-lgpd" class="form-check" required />
+                <span>Concordo com a <a href="#" class="form-link">Política de Privacidade</a> e autorizo contato via WhatsApp.</span>
+              </label>
+              <div class="form-error" id="err-lgpd" role="alert" aria-live="polite"></div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full btn-lg" id="btn-coleta-submit" disabled style="margin-top:1.5rem">
+              ENCONTRAR PONTO DE COLETA
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </form>
+
+          <!-- Tela de sucesso (oculta até envio) -->
+          <div class="pessoas-success" id="pessoas-success" style="display:none" role="status" aria-live="assertive">
+            <div class="fbk-success-icon" aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+            </div>
+            <h2 class="fbk-success-title" id="pessoas-success-title">DESCARTE REGISTRADO!</h2>
+            <p class="fbk-success-sub">Vamos te enviar via WhatsApp o <strong>ponto de coleta homologado mais próximo</strong> do seu CEP, com endereço, horário e o QR Code do seu certificado digital de destinação.</p>
+            <div class="success-detalhe-box">
+              <div class="success-detalhe-row">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Ponto de coleta mais próximo do seu CEP</span>
+              </div>
+              <div class="success-detalhe-row">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                <span>QR Code de rastreamento enviado por WhatsApp</span>
+              </div>
+              <div class="success-detalhe-row">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="2.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <span>EcoPontos creditados após confirmação do descarte</span>
+              </div>
+            </div>
+            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem">
+              <button class="btn btn-primary" onclick="App.goTo('home');return false;">
+                Voltar ao início
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+              <button class="btn btn-secondary-outline" onclick="App.goTo('pessoas');PessoasForm.init();return false;">
+                Novo descarte
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <div class="section-inner">
+          <div class="footer-grid">
+            <div class="footer-brand">
+              <div class="footer-logo">IMPACTO<span> VERDE</span></div>
+              <p class="footer-desc">Coleta domiciliar de resíduos especiais com destinação consciente e certificada.</p>
+              <div class="footer-badges">
+                <span class="footer-badge">PNRS</span>
+                <span class="footer-badge">LGPD</span>
+                <span class="footer-badge">COOPERATIVA</span>
+              </div>
+            </div>
+            <div class="footer-col">
+              <div class="footer-col-title">QUERO DESCARTAR</div>
+              <a href="#pessoas-como-funciona" class="footer-link">Como funciona</a>
+              <a href="#" class="footer-link" onclick="App.goTo('pessoas');return false;">O que coletamos</a>
+              <a href="#pessoas-form" class="footer-link">Registrar descarte</a>
+            </div>
+            <div class="footer-col">
+              <div class="footer-col-title">PARA EMPRESAS</div>
+              <a href="#" class="footer-link" onclick="App.goTo('home');return false;">Plataforma B2B</a>
+              <a href="#" class="footer-link" onclick="App.goTo('planos');return false;">Planos</a>
+              <a href="#" class="footer-link" onclick="App.goTo('diagnostico');return false;">Diagnóstico ESG</a>
+            </div>
+            <div class="footer-col">
+              <div class="footer-col-title">LEGAL</div>
+              <a href="#" class="footer-link">Termos de uso</a>
+              <a href="#" class="footer-link">Privacidade (LGPD)</a>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <span>© 2025 Impacto Verde ESG · FIAP 2TDS · Startup One</span>
+            <span class="footer-bottom-team">Catarina Costa · Miguel Garcia · Enzo Martini</span>
+          </div>
+        </div>
+      </footer>
+
+    </section>
+
   </main>
 
   <!-- Toast global -->
@@ -937,6 +1716,7 @@
   <script src="js/diagnostico.js"></script>
   <script src="js/resultado.js"></script>
   <script src="js/feedback.js"></script>
+  <script src="js/pessoas.js"></script>
   <script src="js/animations.js"></script>
   <script>
     function betaCopyLink() {
