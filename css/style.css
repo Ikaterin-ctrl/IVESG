@@ -3686,6 +3686,13 @@ input[type="range"]::-webkit-slider-thumb {
   text-decoration: underline;
 }
 
+/* Contraste para o formulário B2C sobre fundo verde */
+.section-cta-final .form-label,
+.section-cta-final .form-check-label,
+.section-cta-final .form-required,
+.section-cta-final .form-hint { color: var(--color-black); }
+.section-cta-final .form-link { color: var(--color-black); }
+
 /* Tela de sucesso coleta */
 .pessoas-success {
   text-align: center;
